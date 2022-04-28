@@ -1,6 +1,6 @@
 LOGIN = zimaluk1
 CXX = g++
-BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic
+BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic -fsanitize=address
 FLAGS =
 
 SOURCES = $(wildcard src/*.cpp)

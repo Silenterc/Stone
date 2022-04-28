@@ -5,9 +5,12 @@
 using namespace std;
 class Entity{
 public:
-    Entity(const string& nm, int dmg, int hlth = 0):name(nm), health(hlth), damage(dmg){};
+    Entity(const string& nm, int hlth, int dmg = 0):name(nm), health(hlth), damage(dmg){};
     virtual ~Entity() = default;
     bool isDead();
+    string getName(){
+        return name;
+    }
     virtual void printCard(unsigned int flag, int spaces) const = 0; //the flag tells what piece of info to print
 protected:                                                          // f.e I want to print Soldier         Giant    ...
     string name;                                                    //                     7 damage        2 damage

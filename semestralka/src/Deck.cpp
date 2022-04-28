@@ -7,10 +7,15 @@ Deck::Deck(const string& fileName){
 }
 void Deck::addCard(shared_ptr<Card> crd){
     cards.push_back(crd);
+    size++;
 }
 shared_ptr<Card> Deck::drawCard(){
-    shared_ptr<Card> drawn = *(cards.end());
+    if(size == 0){
+        throw invalid_argument("Deck is empty");
+    }
+    shared_ptr<Card> drawn = *(cards.end() - 1);
     cards.pop_back();
+    size--;
     return drawn;
 }
 void Deck::shuffle(){

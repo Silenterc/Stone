@@ -6,12 +6,16 @@
 using namespace std;
 class Deck{
 public:
-    Deck(){};
+    Deck():size(0){};
     Deck(const string& fileName);
     shared_ptr<Card> drawCard();
     void shuffle();
     void addCard(shared_ptr<Card>);
+    size_t getSize() const{
+        return size;
+    }
 private:
     vector< shared_ptr<Card> > cards;
+    size_t size;
 };
 #endif

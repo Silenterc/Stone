@@ -18,6 +18,7 @@
   "files.associations": {
     "memory": "cpp",
     "vector": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "iostream": "cpp"
   }
 }
