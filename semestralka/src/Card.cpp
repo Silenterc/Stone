@@ -1,6 +1,6 @@
 #include "Card.h"
 #include <iostream>
-bool Card::attack(Card& second){
+bool Card::attack(Entity& second){
     second.health -= damage;
     health -= second.damage;
     return true;
