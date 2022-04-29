@@ -13,7 +13,7 @@
       "environment": [],
       "program": "/Users/silenter/Desktop/PA2/zimaluk1/semestralka/src/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
+      "MIMode": "lldb",
       "externalConsole": true
     }
   ]
