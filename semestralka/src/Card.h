@@ -4,7 +4,7 @@
 #include "Entity.h"
 class Card : public Entity{
 public:
-    Card(const string& nm, int dmg, int hlth):Entity(nm, dmg, hlth){};
+    Card(const string& nm, int dmg, int hlth):Entity(nm, hlth, dmg){};
     bool attack(Entity& second);
     size_t getNameLength() const{
         return name.length();
@@ -13,7 +13,7 @@ public:
     size_t getHealthLength() const;
     virtual bool isBattlecry() const = 0;
     virtual bool isTaunt() const = 0;
-   // virtual size_t getTypeLength() const = 0; //string length of the type (for printing purposes)
+    virtual size_t getTypeLength() const = 0; //string length of the type (for printing purposes)
     virtual void printCard(unsigned int flag = 0, int spaces = 0) const = 0;
     virtual shared_ptr<Card> clonePtr() = 0;
 protected:
@@ -28,6 +28,9 @@ public:
     bool isTaunt() const override{
         return false;
     }
+    size_t getTypeLength() const override{
+        return string("Basic Card").length();
+    }
     void printCard(unsigned int flag = 0, int spaces = 0) const override;
     shared_ptr<Card> clonePtr() override;
 private:
@@ -41,6 +44,9 @@ public:
     bool isTaunt() const override{
         return true;
     }
+    size_t getTypeLength() const override{
+        return string("Taunt").length();
+    }
     void printCard(unsigned int flag = 0, int spaces = 0) const override;
     shared_ptr<Card> clonePtr() override;
 private:
@@ -53,6 +59,9 @@ public:
     }
     bool isTaunt() const override{
         return false;
+    }
+    size_t getTypeLength() const override{
+        return string("Battlecry").length();
     }
     void printCard(unsigned int flag = 0, int spaces = 0) const override;
     shared_ptr<Card> clonePtr() override;

@@ -5,7 +5,6 @@
 #include "Deck.h"
 #include <vector>
 #define MAXHANDSIZE 5
-
 class Hand{
 public:
     Hand():size(0){};               
@@ -19,6 +18,9 @@ public:
 private:
 vector< shared_ptr<Card> > cards;
 size_t size;
-size_t getNamesLengths() const;
+int getNamesLengths() const;
+int prevPrinted(unsigned int row, size_t column, int prevDiff) const;
+void printSpaces(int spaces) const;
 };
+
 #endif

@@ -12,17 +12,17 @@ size_t Card::getHealthLength() const{
     return (to_string(health)).length();
 }
 void BasicCard::printCard(unsigned int flag, int spaces) const{
-    for(int l = 0; l < spaces; l++){
-        cout <<" ";
-    }
+    // for(int l = 0; l < spaces; l++){
+    //     cout <<" ";
+    // }
     switch(flag){
     case 1: cout << name;
             break;
-    case 2: cout << "BasicCard";
+    case 2: cout << "Basic Card";
             break;
-    case 3: cout << health;
+    case 3: cout << damage;
             break;
-    case 4: cout << damage;
+    case 4: cout << health;
             break;
     default: break;
     }
@@ -39,9 +39,9 @@ void TauntCard::printCard(unsigned int flag, int spaces) const{
             break;
     case 2: cout << "Taunt";
             break;
-    case 3: cout << health;
+    case 3: cout << damage;
             break;
-    case 4: cout << damage;
+    case 4: cout << health;
             break;
     default: break;
     }
@@ -58,9 +58,9 @@ void BattlecryCard::printCard(unsigned int flag, int spaces) const{
             break;
     case 2: cout << "Battlecry";
             break;
-    case 3: cout << health;
+    case 3: cout << damage;
             break;
-    case 4: cout << damage;
+    case 4: cout << health;
             break;
     default: break;
     }

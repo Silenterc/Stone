@@ -6,12 +6,14 @@ using namespace std;
 #include <iostream>
 int main(){
     Deck d;
-    TauntCard obr("Obr",15,3);
+    TauntCard obr("Obr",3,15);
     BasicCard vojak("Vojak",7,5);
-    BattlecryCard silak("Silak",5,10);
+    BattlecryCard silak("Silak",10,5);
+    TauntCard megaObr("MegaObr",3,20);
     d.addCard(obr.clonePtr());
     d.addCard(vojak.clonePtr());
     d.addCard(silak.clonePtr());
+    d.addCard(megaObr.clonePtr());
     // assert(d.getSize() == 3);
     // shared_ptr<Card>silakC = d.drawCard();
     // silakC -> printCard(0,0);
@@ -21,12 +23,14 @@ int main(){
     // obrC -> printCard();
     Hand h;
     h.drawCard(d);
+    assert(d.getSize() == 3);
+    h.drawCard(d);
     assert(d.getSize() == 2);
+    int damage = 2;
     h.drawCard(d);
     assert(d.getSize() == 1);
-    h.drawCard(d);
-    assert(d.getSize() == 0);
     assert(h.getSize() == 3);
+    h.drawCard(d);
     h.print();
     // cout << endl;
     // shared_ptr<Card>silakC = h.getCard(1);
