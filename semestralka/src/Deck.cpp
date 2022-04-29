@@ -5,6 +5,14 @@ using namespace std;
 Deck::Deck(const string& fileName){
 
 }
+Deck& Deck::operator =(const Deck& second){
+    if(this == &second){
+        return *this;
+    }
+    cards = second.cards;
+    size = second.size;
+    return *this;
+}
 void Deck::addCard(shared_ptr<Card> crd){
     cards.push_back(crd);
     size++;

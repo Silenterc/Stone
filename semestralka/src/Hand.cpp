@@ -19,7 +19,7 @@ pair<string, bool> Hand::drawCard(Deck& deck){
     size++;
     return toBeRet;
 }
-shared_ptr<Card> Hand::getCard(int cardNO) const{
+shared_ptr<Card> Hand::viewCard(int cardNO) const{
     return cards[cardNO - 1];
 }
 shared_ptr<Card> Hand::playCard(int cardNO){
@@ -56,7 +56,7 @@ int Hand::prevPrinted(unsigned int row, size_t column, int prevDiff) const{
         default : return 0;
     }
 }
-static void Hand::printSpaces(int spaces){
+void Hand::printSpaces(int spaces) const{
     for(int i = 0; i < spaces; i++){
         cout <<" ";
     }

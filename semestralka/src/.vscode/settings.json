@@ -19,6 +19,7 @@
     "memory": "cpp",
     "vector": "cpp",
     "string": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "utility": "cpp"
   }
 }

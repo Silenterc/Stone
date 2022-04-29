@@ -2,6 +2,7 @@
 #include "Deck.h"
 #include "Entity.h"
 #include "Hand.h"
+#include "Player.h"
 using namespace std;
 #include <iostream>
 int main(){
@@ -14,6 +15,8 @@ int main(){
     d.addCard(vojak.clonePtr());
     d.addCard(silak.clonePtr());
     d.addCard(megaObr.clonePtr());
+    Deck c;
+    c = d;
     // assert(d.getSize() == 3);
     // shared_ptr<Card>silakC = d.drawCard();
     // silakC -> printCard(0,0);
@@ -22,15 +25,15 @@ int main(){
     // vojakC -> printCard(0,0);
     // obrC -> printCard();
     Hand h;
-    h.drawCard(d);
-    assert(d.getSize() == 3);
-    h.drawCard(d);
-    assert(d.getSize() == 2);
+    h.drawCard(c);
+    assert(c.getSize() == 3);
+    h.drawCard(c);
+    assert(c.getSize() == 2);
     int damage = 2;
-    h.drawCard(d);
-    assert(d.getSize() == 1);
+    h.drawCard(c);
+    assert(d.getSize() == 4);
     assert(h.getSize() == 3);
-    h.drawCard(d);
+    h.drawCard(c);
     h.print();
     // cout << endl;
     // shared_ptr<Card>silakC = h.getCard(1);
