@@ -27,30 +27,28 @@ shared_ptr<Card> Hand::playCard(int cardNO){
     cards.erase(cards.begin() + (cardNO - 1));
     return toBeRet;
 }
-int Hand::getNamesLengths() const{
-    size_t sum = 0;
-    for(const auto& i : cards){
-        sum += i -> getNameLength();
-    }
-    return (int)sum;
-}
+//This function will calculate the difference between the previous words printed 
+//so I can then balance out the amount of spaces to print for each attribute
+//The first card printed actually has a set amount of spaces(SPACECONSTANT)
 int Hand::prevPrinted(unsigned int row, size_t column, int prevDiff) const{
-    switch(row){
-        case(1):{
-            return cards[column - 1] -> getNameLength();
-            return 0;
+    switch(row){                                                      
+        case(1):{ //When printing the first row (card names) I only want to decrement the amount of spaces by the length of the name                                                   
+            return cards[column - 1] -> getNameLength();             
         }
-        case(2):{
-            int spc = cards[column - 1] -> getTypeLength() - cards[column - 1] -> getNameLength();
-            spc += prevDiff; //still need to account for the previous difference
+        case(2):{ //second row(card Type).
+            //difference between the length of the previous card's name and type strings.
+            //f.e.:    Giant            Elf
+            //         Battlecry        => and I am calculating the amount of spaces needed here(4 + prevDiff)   
+            int spc = cards[column - 1] -> getTypeLength() - cards[column - 1] -> getNameLength(); 
+            spc += prevDiff; //still need to account for the previous previous difference as well
             return spc;
         }
-        case(3):{
+        case(3):{ //third row(card Damage)
             int spc = cards[column - 1] -> getDamageLength() - cards[column - 1] -> getTypeLength();
             spc += prevDiff;  
             return spc;
         }
-        case(4):{
+        case(4):{ //fourth row(card Health)
             int spc = cards[column - 1] -> getHealthLength() - cards[column - 1] -> getDamageLength();
             spc += prevDiff; 
             return spc;
@@ -58,29 +56,28 @@ int Hand::prevPrinted(unsigned int row, size_t column, int prevDiff) const{
         default : return 0;
     }
 }
-void Hand::printSpaces(int spaces) const{
+static void Hand::printSpaces(int spaces){
     for(int i = 0; i < spaces; i++){
         cout <<" ";
     }
 }
 void Hand::print() const{
-    int SPACESCONSTANT = getTermSize()/10;
-    int middleSpaces = (getTermSize() - 2 * SPACESCONSTANT)/MAXHANDSIZE;
+    int SPACESCONSTANT = getTermSize()/10; //By how many spaces to indent the first card
+    int middleSpaces = (getTermSize() - 2 * SPACESCONSTANT)/MAXHANDSIZE;//The base amount of spaces between cards
     int spaces = 0;
     int prevDiff = 0;
-    queue<int> prevDifferences;
-    for(int i = 0; i < size - 1; i++){
+    queue<int> prevDifferences; //I need to keep track of the previous differences in spaces, and this queue does it well
+    for(int i = 0; i < size - 1; i++){ //For the first row to be printed (card Names), there obviously are not any previous differences
         prevDifferences.push(0);
     }
     for(unsigned int l = 1; l < 5; l++){
-        prevDiff = 0;
         for(size_t i = 0; i < size; i++){
-            if(i == 0){
+            if(i == 0){ //first card gets indented based on the constant I have set
                 spaces = SPACESCONSTANT;
             } else{
                 prevDiff = prevPrinted(l, i, prevDifferences.front());
                 prevDifferences.pop();
-                prevDifferences.push(prevDiff);
+                prevDifferences.push(prevDiff); 
                 spaces = middleSpaces - prevDiff; 
             }
             printSpaces(spaces);
@@ -88,10 +85,4 @@ void Hand::print() const{
         }
         cout << endl;
     } 
-    
-    
-    
-    // for(const auto& i: cards){
-    //     i -> printCard();
-    // }
 }

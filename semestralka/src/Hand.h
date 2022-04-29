@@ -18,7 +18,6 @@ public:
 private:
 vector< shared_ptr<Card> > cards;
 size_t size;
-int getNamesLengths() const;
 int prevPrinted(unsigned int row, size_t column, int prevDiff) const;
 void printSpaces(int spaces) const;
 };
