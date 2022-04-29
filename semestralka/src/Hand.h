@@ -1,9 +1,6 @@
 #ifndef HAND_H
 #define HAND_H
-#include "Card.h"
-#include "Deck.h"
 #include "CardPrintStorage.h"
-#include <vector>
 #define MAXHANDSIZE 5
 class Hand : public CardPrintStorage{
 public:

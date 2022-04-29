@@ -53,8 +53,10 @@ void CardPrintStorage::print() const{
     int spaces = 0;
     int prevDiff = 0;
     queue<int> prevDifferences; //I need to keep track of the previous differences in spaces, and this queue does it well
-    for(int i = 0; i < size - 1; i++){ //For the first row to be printed (card Names), there obviously are not any previous differences
-        prevDifferences.push(0);
+    if(size > 0){
+        for(int i = 0; i < size - 1; i++){ //For the first row to be printed (card Names), there obviously are not any previous differences
+            prevDifferences.push(0);
+        }
     }
     for(unsigned int l = 1; l < 5; l++){
         for(size_t i = 0; i < size; i++){
