@@ -11,10 +11,7 @@ size_t Card::getDamageLength() const{
 size_t Card::getHealthLength() const{
     return (to_string(health)).length();
 }
-void BasicCard::printCard(unsigned int flag, int spaces) const{
-    // for(int l = 0; l < spaces; l++){
-    //     cout <<" ";
-    // }
+void BasicCard::print(unsigned int flag) const{
     switch(flag){
     case 1: cout << name;
             break;
@@ -30,10 +27,7 @@ void BasicCard::printCard(unsigned int flag, int spaces) const{
 shared_ptr<Card> BasicCard::clonePtr(){
     return make_shared<BasicCard>(*this);
 }
-void TauntCard::printCard(unsigned int flag, int spaces) const{
-    for(int l = 0; l < spaces; l++){
-        cout <<" ";
-    }
+void TauntCard::print(unsigned int flag) const{
     switch(flag){
     case 1: cout << name;
             break;
@@ -49,10 +43,7 @@ void TauntCard::printCard(unsigned int flag, int spaces) const{
 shared_ptr<Card> TauntCard::clonePtr(){
     return make_shared<TauntCard>(*this);
 }
-void BattlecryCard::printCard(unsigned int flag, int spaces) const{
-    for(int l = 0; l < spaces; l++){
-        cout <<" ";
-    }
+void BattlecryCard::print(unsigned int flag) const{
     switch(flag){
     case 1: cout << name;
             break;

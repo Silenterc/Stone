@@ -4,46 +4,63 @@
 #include "Hand.h"
 #include "Player.h"
 #include "PlayingBoard.h"
+#include "Player.h"
 using namespace std;
 #include <iostream>
 int main(){
-    Deck d;
-    PlayingBoard board1,board2;
+    Player p1("Lukas", 30),p2("Sakul", 30);
+    Deck d, c;
     TauntCard obr("Obr",3,15);
     BasicCard vojak("Vojak",7,5);
     BattlecryCard silak("Silak",10,5);
     TauntCard megaObr("MegaObr",3,20);
-    Hand h;
     d.addCard(obr.clonePtr());
     d.addCard(vojak.clonePtr());
     d.addCard(silak.clonePtr());
     d.addCard(megaObr.clonePtr());
+    c = d;
+    p1.setDeck(c);
+    p2.setDeck(d);
+    for(int i = 0; i < 4; i++){
+        p1.drawCard();
+        p2.drawCard();
+        p1.playCard(1);
+        p2.playCard(1);
+    }
+    p1.print(1);
+    p2.print(1);
+    p1.attack(3,2,p2);
+    //p1.attack(1,2,p2);
+    p1.print(1);
+    p2.print(1);
 
-    Deck c = d;
-    h.drawCard(c);
+
+
+    // Deck c = d;
+    // h.drawCard(c);
     
-    h.drawCard(c);
+    // h.drawCard(c);
     
-    int damage = 2;
-    h.drawCard(c);
+    // int damage = 2;
+    // h.drawCard(c);
    
-    h.drawCard(c);
-    //h.print();
+    // h.drawCard(c);
+    // h.print();
 
 
-    board1.addToBoard(obr.clonePtr());
-    board1.addToBoard(vojak.clonePtr());
-    board1.addToBoard(silak.clonePtr());
-    board1.addToBoard(megaObr.clonePtr());
-    board2.addToBoard(obr.clonePtr());
-    board2.addToBoard(vojak.clonePtr());
-    board2.addToBoard(silak.clonePtr());
-    board2.addToBoard(megaObr.clonePtr());
-    board1.getAttacked(board2.viewCard(1),2);
-    board1.getAttacked(board2.viewCard(1),2);
-    board1.print();
-    cout << endl;
-    board2.print();
+    // board1.addToBoard(obr.clonePtr());
+    // board1.addToBoard(vojak.clonePtr());
+    // board1.addToBoard(silak.clonePtr());
+    // board1.addToBoard(megaObr.clonePtr());
+    // board2.addToBoard(obr.clonePtr());
+    // board2.addToBoard(vojak.clonePtr());
+    // board2.addToBoard(silak.clonePtr());
+    // board2.addToBoard(megaObr.clonePtr());
+    // board1.getAttacked(board2.viewCard(1),2);
+    // board1.getAttacked(board2.viewCard(1),2);
+    // board1.print();
+    // cout << endl;
+    // board2.print();
     
     // assert(d.getSize() == 3);
     // shared_ptr<Card>silakC = d.drawCard();

@@ -17,5 +17,6 @@ pair<string, bool> Hand::drawCard(Deck& deck){
 shared_ptr<Card> Hand::playCard(int cardNO){
     shared_ptr<Card> toBeRet = cards[cardNO - 1];
     cards.erase(cards.begin() + (cardNO - 1));
+    size--;
     return toBeRet;
 }

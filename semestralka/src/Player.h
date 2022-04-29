@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Hand.h"
 #include "Deck.h"
+#include "PlayingBoard.h"
 using namespace std;
 class Player : public Entity{
 public:
@@ -16,11 +17,17 @@ public:
     void printHand() const{
         hand.print();
     }
-    shared_ptr<Card> playCard(int NO){
-        return hand.playCard(NO);
+    void printBoard() const{
+        board.print();
     }
+    void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
+    bool playCard(int NO){ //returns false if the board is full.
+        return board.addToBoard(hand.playCard(NO));
+    }
+    void attack(int attacking, int defending, Player& second);
 protected:
     Deck deck;
     Hand hand;
+    PlayingBoard board;
 };
 #endif

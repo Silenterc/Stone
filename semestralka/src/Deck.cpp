@@ -9,7 +9,10 @@ Deck& Deck::operator =(const Deck& second){
     if(this == &second){
         return *this;
     }
-    cards = second.cards;
+    cards.clear();
+    for(auto& c : second.cards){
+        cards.push_back(c -> clonePtr());
+    }
     size = second.size;
     return *this;
 }

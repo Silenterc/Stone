@@ -69,7 +69,7 @@ void CardPrintStorage::print() const{
                 spaces = middleSpaces - prevDiff; 
             }
             printSpaces(spaces);
-            cards[i] -> printCard(l);
+            cards[i] -> print(l);
         }
         cout << endl;
     } 

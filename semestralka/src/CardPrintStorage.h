@@ -11,6 +11,11 @@ public:
     size_t getSize(){
         return size;
     }
+    void removeCard(int cardNO){
+        cards.erase(cards.begin() + (cardNO - 1));
+        size--;
+        
+    }
 protected:
     vector< shared_ptr<Card> > cards;
     size_t size;

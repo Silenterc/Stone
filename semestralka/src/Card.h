@@ -14,7 +14,6 @@ public:
     virtual bool isBattlecry() const = 0;
     virtual bool isTaunt() const = 0;
     virtual size_t getTypeLength() const = 0; //string length of the type (for printing purposes)
-    virtual void printCard(unsigned int flag = 0, int spaces = 0) const = 0;
     virtual shared_ptr<Card> clonePtr() = 0;
 protected:
     
@@ -31,7 +30,7 @@ public:
     size_t getTypeLength() const override{
         return string("Basic Card").length();
     }
-    void printCard(unsigned int flag = 0, int spaces = 0) const override;
+    void print(unsigned int flag = 0) const override;
     shared_ptr<Card> clonePtr() override;
 private:
 };
@@ -47,7 +46,7 @@ public:
     size_t getTypeLength() const override{
         return string("Taunt").length();
     }
-    void printCard(unsigned int flag = 0, int spaces = 0) const override;
+    void print(unsigned int flag = 0) const override;
     shared_ptr<Card> clonePtr() override;
 private:
 };
@@ -63,7 +62,7 @@ public:
     size_t getTypeLength() const override{
         return string("Battlecry").length();
     }
-    void printCard(unsigned int flag = 0, int spaces = 0) const override;
+    void print(unsigned int flag = 0) const override;
     shared_ptr<Card> clonePtr() override;
 private:
 };
