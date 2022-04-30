@@ -12,6 +12,7 @@ public:
     shared_ptr<Card> drawCard();
     void shuffle();
     void addCard(shared_ptr<Card>);
+    void loadCards();
     size_t getSize() const{
         return size;
     }

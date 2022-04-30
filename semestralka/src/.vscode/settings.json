@@ -21,6 +21,7 @@
     "string": "cpp",
     "iostream": "cpp",
     "utility": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "ostream": "cpp"
   }
 }

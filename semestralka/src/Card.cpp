@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "helperFunc.h"
 #include <iostream>
 bool Card::attack(Entity& second){
     second.health -= damage;

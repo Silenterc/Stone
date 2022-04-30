@@ -86,5 +86,4 @@ public:
 private:
     int battlecryID; //identifier of which battlecry effect does the card have. Starts from 1.
 };
-list <string> battlecryIDtoString(int ID);
 #endif

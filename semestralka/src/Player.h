@@ -4,6 +4,8 @@
 #include "Hand.h"
 #include "Deck.h"
 #include "PlayingBoard.h"
+#include <sstream>
+#include <iostream>
 using namespace std;
 class Player : public Entity{
 public:
@@ -25,7 +27,7 @@ public:
     }
     void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
     bool playCard(int NO); //returns false if the board is full.
-    bool attack(int attacking, int defending, PlayingBoard& second);
+    bool attack(int attacking, int defending, Player& second); //a complex function for a player attacking another player with one of his cards
 protected:
     Deck deck;
     Hand hand;

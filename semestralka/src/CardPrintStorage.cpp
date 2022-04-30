@@ -1,6 +1,5 @@
 #include "CardPrintStorage.h"
-#include <sys/ioctl.h> 
-#include <unistd.h> 
+#include "helperFunc.h"
 #include <iostream>
 #include <queue>
 using namespace std;

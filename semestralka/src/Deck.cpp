@@ -33,5 +33,8 @@ void Deck::shuffle(){
     auto rng = default_random_engine();
     std::shuffle(cards.begin(),cards.end(),rng);
 }
+void Deck::loadCards(){
+    
+}
 
 

@@ -29,11 +29,3 @@ void Menu::printInstructions(){
     ifstream instructions = loadFile("assets/instructions");
     cout << instructions.rdbuf() << endl;
 }
-ifstream loadFile(const string& path){
-    ifstream in;
-    in.open(path);
-    if(in.fail()){
-        throw invalid_argument("COULD NOT OPEN FILE");
-    }
-    return in;
-}
