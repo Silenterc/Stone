@@ -1,13 +1,7 @@
 #include "CardPrintStorage.h"
-#include "helperFunc.h"
 #include <iostream>
 #include <queue>
 using namespace std;
-unsigned int getTermSize(){
-    struct winsize size;
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-    return (unsigned int)size.ws_col;
-}
 shared_ptr<Card> CardPrintStorage::viewCard(int cardNO) const{
     return cards[cardNO - 1];
 }
@@ -59,11 +53,6 @@ int CardPrintStorage::prevPrinted(unsigned int row, size_t column, int prevDiff)
             return spc;
         }
         default : return 0;
-    }
-}
-void printSpaces(int spaces){
-    for(int i = 0; i < spaces; i++){
-        cout <<" ";
     }
 }
 void CardPrintStorage::print() const{

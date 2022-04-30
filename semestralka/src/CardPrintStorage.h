@@ -1,6 +1,5 @@
 #ifndef CPS_H
 #define CPS_H
-#include "Card.h"
 #include "Deck.h"
 #include <vector>
 class CardPrintStorage{
@@ -24,6 +23,4 @@ protected:
     int prevPrinted(unsigned int row, size_t column, int prevDiff) const;
     void printStars(int stars) const;
 };
-unsigned int getTermSize();
-void printSpaces(int spaces);
 #endif

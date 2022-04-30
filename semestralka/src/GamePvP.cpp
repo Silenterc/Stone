@@ -2,7 +2,7 @@
 using namespace std;
 void GamePvP::play(){
     
-    while(!isDone){
-
-    }
+}
+void GamePvP::printAll(){
+    
 }

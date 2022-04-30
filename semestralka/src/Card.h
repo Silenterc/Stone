@@ -2,6 +2,7 @@
 #ifndef CARD_H
 #define CARD_H
 #include "Entity.h"
+#include "helperFunc.h"
 #include <list>
 class Card : public Entity{
 public:

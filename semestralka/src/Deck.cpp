@@ -2,9 +2,6 @@
 #include <algorithm>
 #include <random>
 using namespace std;
-Deck::Deck(const string& fileName){
-
-}
 Deck& Deck::operator =(const Deck& second){
     if(this == &second){
         return *this;
@@ -34,7 +31,35 @@ void Deck::shuffle(){
     std::shuffle(cards.begin(),cards.end(),rng);
 }
 void Deck::loadCards(){
-    
+    string path("assets/cards");
+    ifstream in = loadFile(path);
+    string cardLine;
+    stringstream parser;
+    string cardName, cardType, damage, health, battlecryID;
+    for(int i = 0; i < 30; i++){
+        cardLine.clear();
+        parser.clear();
+        getline(in,cardLine);
+        parser.str(cardLine);
+        getline(parser,cardName,';');
+        getline(parser,cardType,';');
+        getline(parser,damage,';');
+        getline(parser,health,';');
+        getline(parser,battlecryID,';');
+        if(cardType == "Basic Card"){
+            BasicCard newOne(cardName, stoi(damage), stoi(health));
+            addCard(newOne.clonePtr());
+        } else if(cardType == "Taunt"){
+            TauntCard newOne(cardName, stoi(damage), stoi(health));
+            addCard(newOne.clonePtr());
+        } else if(cardType == "Battlecry"){
+            BattlecryCard newOne(cardName, stoi(damage), stoi(health), stoi(battlecryID));
+            addCard(newOne.clonePtr());
+        } else{
+            throw invalid_argument("Invalid card type");
+        }
+    }
+
 }
 
 

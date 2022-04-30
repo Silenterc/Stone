@@ -1,3 +1,5 @@
+#ifndef GAME
+#define GAME
 #include "PlayerLive.h"
 class Game{
 public:
@@ -10,3 +12,4 @@ protected:
     bool playerTurn;
     bool isDone = false;
 };
+#endif

@@ -7,7 +7,6 @@ using namespace std;
 class Deck{
 public:
     Deck():size(0){};
-    Deck(const string& fileName);
     Deck& operator =(const Deck& second);
     shared_ptr<Card> drawCard();
     void shuffle();

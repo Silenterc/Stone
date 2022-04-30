@@ -2,7 +2,6 @@
 #define MENU_H
 #include <string>
 #include <vector>
-#include <fstream>
 #include "helperFunc.h"
 #define MENUMIDDLE 32 //how many chars are the radius of the big MENU printed
 using namespace std;

@@ -1,16 +1,14 @@
-#include "Card.h"
-#include "Deck.h"
-#include "Entity.h"
-#include "Hand.h"
-#include "Player.h"
-#include "PlayingBoard.h"
+
 #include "Player.h"
 #include "Menu.h"
 using namespace std;
 #include <iostream>
 int main(){
-    Menu m;
-    m.init();
+    Deck d;
+    d.loadCards();
+    
+    // Menu m;
+    // m.init();
      /*
     Player p1("Lukas", 30),p2("Sakul", 30);
     Deck d, c;
