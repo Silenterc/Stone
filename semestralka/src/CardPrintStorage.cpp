@@ -74,3 +74,25 @@ void CardPrintStorage::print() const{
         cout << endl;
     } 
 }
+void CardPrintStorage::printStars(int stars) const{
+    for(int i = 0; i < stars; i++){
+        cout <<'*';
+    }
+}
+void CardPrintStorage::printCensored() const{
+    int SPACESCONSTANT = getTermSize()/10;
+    int middleSpaces = (getTermSize() - 2 * SPACESCONSTANT)/maxStorageSize;
+    int spaces = 0;
+    for(unsigned int l = 1; l < 5; l++){
+        for(size_t i = 0; i < size; i++){
+            if(i == 0){ 
+                spaces = SPACESCONSTANT;
+            } else{
+                spaces = middleSpaces - 5; 
+            }
+            printSpaces(spaces);
+            printStars(5);
+        }
+        cout << endl;
+    } 
+}

@@ -20,11 +20,14 @@ public:
     void printBoard() const{
         board.print();
     }
+    PlayingBoard& getBoard(){
+        return board;
+    }
     void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
     bool playCard(int NO){ //returns false if the board is full.
         return board.addToBoard(hand.playCard(NO));
     }
-    void attack(int attacking, int defending, Player& second);
+    bool attack(int attacking, int defending, PlayingBoard& second);
 protected:
     Deck deck;
     Hand hand;

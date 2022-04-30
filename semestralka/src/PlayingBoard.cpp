@@ -14,3 +14,11 @@ bool PlayingBoard::addToBoard(shared_ptr<Card> crd){
     size++;
     return true;
 }
+bool PlayingBoard::hasTaunt() const{
+    for(const auto& c : cards){
+        if(c -> isTaunt()){
+            return true;
+        }
+    }
+    return false;
+}

@@ -14,6 +14,9 @@ int main(){
     BasicCard vojak("Vojak",7,5);
     BattlecryCard silak("Silak",10,5);
     TauntCard megaObr("MegaObr",3,20);
+    d.addCard(silak.clonePtr());
+    d.addCard(silak.clonePtr());
+    d.addCard(silak.clonePtr());
     d.addCard(obr.clonePtr());
     d.addCard(vojak.clonePtr());
     d.addCard(silak.clonePtr());
@@ -27,10 +30,13 @@ int main(){
         p1.playCard(1);
         p2.playCard(1);
     }
-    p1.print(1);
-    p2.print(1);
-    p1.attack(3,2,p2);
-    //p1.attack(1,2,p2);
+    p1.drawCard();
+    p1.drawCard();
+    p1.print(0);
+    p2.print(0);
+    p1.attack(1,4,p2.getBoard());
+    p1.attack(2,4,p2.getBoard());
+    p1.attack(3,4,p2.getBoard());
     p1.print(1);
     p2.print(1);
 
