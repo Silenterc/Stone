@@ -22,11 +22,18 @@ void Menu::printMENU() const{
 void Menu::init(){
     cout << "\033[H\033[2J" << flush;
     printMENU();
+    //printInstructions();
 
 }
 void Menu::printInstructions(){
-    cout <<"These are instructions." << endl;
-    cout << "Type anything to exit." << endl;
-    string s;
-    cin >> s;
+    ifstream instructions = loadFile("assets/instructions");
+    cout << instructions.rdbuf() << endl;
+}
+ifstream loadFile(const string& path){
+    ifstream in;
+    in.open(path);
+    if(in.fail()){
+        throw invalid_argument("COULD NOT OPEN FILE");
+    }
+    return in;
 }

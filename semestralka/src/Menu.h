@@ -2,6 +2,7 @@
 #define MENU_H
 #include <string>
 #include <vector>
+#include <fstream>
 #include "CardPrintStorage.h"
 #define MENUMIDDLE 32 //how many chars are the radius of the big MENU printed
 using namespace std;
@@ -17,4 +18,5 @@ private:
     static vector<string> MENU; //Holds MENU written out to be printed over 7 lines
     void printMENU() const; //prints this MENU text
 };
+ifstream loadFile(const string& path);
 #endif
