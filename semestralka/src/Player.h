@@ -24,9 +24,7 @@ public:
         return board;
     }
     void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
-    bool playCard(int NO){ //returns false if the board is full.
-        return board.addToBoard(hand.playCard(NO));
-    }
+    bool playCard(int NO); //returns false if the board is full.
     bool attack(int attacking, int defending, PlayingBoard& second);
 protected:
     Deck deck;

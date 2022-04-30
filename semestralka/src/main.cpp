@@ -5,9 +5,13 @@
 #include "Player.h"
 #include "PlayingBoard.h"
 #include "Player.h"
+#include "Menu.h"
 using namespace std;
 #include <iostream>
 int main(){
+    Menu m;
+    m.init();
+    /*
     Player p1("Lukas", 30),p2("Sakul", 30);
     Deck d, c;
     TauntCard obr("Obr",3,15);
@@ -32,12 +36,27 @@ int main(){
     }
     p1.drawCard();
     p1.drawCard();
-    p1.print(0);
     p2.print(0);
+    p1.print(1);
+    int x,y;
+    while(cin >> x >> y){
+        cout << "\033[H\033[2J" << flush;
+        p1.attack(x,y,p2.getBoard());
+        p2.print(0);
+        p1.print(1);
+    }
+    
+   
+    p2.print(0);
+    p1.print(1);
     p1.attack(1,4,p2.getBoard());
     p1.attack(2,4,p2.getBoard());
     p1.attack(3,4,p2.getBoard());
-    p1.print(1);
+    p1.playCard(1);
+    p1.playCard(1);
+    p1.playCard(1);
+    p1.playCard(1);
+    p1.print(0);
     p2.print(1);
 
 
@@ -93,4 +112,5 @@ int main(){
     // vojakC -> printCard(0,0);
     // shared_ptr<Card>obrC = h.getCard(3);
     // obrC -> printCard(0,0);
+    */
 }

@@ -22,7 +22,8 @@ protected:
     size_t size;
     int maxStorageSize;
     int prevPrinted(unsigned int row, size_t column, int prevDiff) const;
-    void printSpaces(int spaces) const;
     void printStars(int stars) const;
 };
+unsigned int getTermSize();
+void printSpaces(int spaces);
 #endif

@@ -2,6 +2,13 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+bool Player::playCard(int NO){
+    bool played = board.addToBoard(hand.viewCard(NO));
+    if(played){
+        hand.playCard(NO);
+    } 
+    return played;
+}
 bool Player::attack(int attacking, int defending, PlayingBoard& second){
     if(second.hasTaunt() && !(second.viewCard(defending) -> isTaunt())){
         return false;
@@ -17,9 +24,11 @@ void Player::print(unsigned int flag) const{
         board.print();
         cout << endl;
         hand.print();
+        cout << endl;
     } else{
+        hand.printCensored();
+        cout << endl;
         board.print();
         cout << endl;
-        hand.printCensored();
     }
 }

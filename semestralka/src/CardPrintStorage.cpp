@@ -42,7 +42,7 @@ int CardPrintStorage::prevPrinted(unsigned int row, size_t column, int prevDiff)
         default : return 0;
     }
 }
-void CardPrintStorage::printSpaces(int spaces) const{
+void printSpaces(int spaces){
     for(int i = 0; i < spaces; i++){
         cout <<" ";
     }
