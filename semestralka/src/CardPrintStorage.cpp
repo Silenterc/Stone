@@ -39,6 +39,26 @@ int CardPrintStorage::prevPrinted(unsigned int row, size_t column, int prevDiff)
             spc += prevDiff; 
             return spc;
         }
+        case(5):{
+            int spc = 0;
+            int potentialBatID = cards[column - 1] -> getBattlecry();
+            if(!potentialBatID){
+                spc -= cards[column - 1] -> getHealthLength();
+            } else{
+                spc = cards[column - 1] -> getBattlecryLength(potentialBatID,1) - cards[column - 1] -> getHealthLength();
+            }
+            spc += prevDiff;
+            return spc;
+        }
+        case(6):{
+            int spc = 0;
+            int potentialBatID = cards[column - 1] -> getBattlecry();
+            if(potentialBatID){
+                spc = cards[column - 1] -> getBattlecryLength(potentialBatID,2) - cards[column - 1] -> getBattlecryLength(potentialBatID,1);
+            }
+            spc += prevDiff;
+            return spc;
+        }
         default : return 0;
     }
 }
@@ -58,7 +78,7 @@ void CardPrintStorage::print() const{
             prevDifferences.push(0);
         }
     }
-    for(unsigned int l = 1; l < 5; l++){
+    for(unsigned int l = 1; l < 7; l++){
         for(size_t i = 0; i < size; i++){
             if(i == 0){ //first card gets indented based on the constant I have set
                 spaces = SPACESCONSTANT;

@@ -9,17 +9,17 @@
 using namespace std;
 #include <iostream>
 int main(){
-    Menu m;
-    m.init();
-    /*
+    // Menu m;
+    // m.init();
     Player p1("Lukas", 30),p2("Sakul", 30);
     Deck d, c;
     TauntCard obr("Obr",3,15);
     BasicCard vojak("Vojak",7,5);
-    BattlecryCard silak("Silak",10,5);
+    BattlecryCard silak("Silak",10,5,1);
+    BattlecryCard megaSilak("megaSilak",13,6,2);
     TauntCard megaObr("MegaObr",3,20);
     d.addCard(silak.clonePtr());
-    d.addCard(silak.clonePtr());
+    d.addCard(megaSilak.clonePtr());
     d.addCard(silak.clonePtr());
     d.addCard(obr.clonePtr());
     d.addCard(vojak.clonePtr());
@@ -38,6 +38,7 @@ int main(){
     p1.drawCard();
     p2.print(0);
     p1.print(1);
+    /*
     int x,y;
     while(cin >> x >> y){
         cout << "\033[H\033[2J" << flush;
