@@ -19,8 +19,12 @@ public:
     virtual int getBattlecry() const = 0; //each battlecry effect has its int ID, from which I will deduct the effect. Returns 0 if the card is not a battlecry.
     virtual int getBattlecryLength(int batNO, int row) const = 0;
     virtual shared_ptr<Card> clonePtr() = 0;
+    friend ostream& operator <<(ostream& out, const Card& crd){
+        crd.printOstream(out);
+        return out;
+    }
 protected:
-    
+    virtual void printOstream(ostream& out) const = 0;
 };
 class BasicCard : public Card{
 public:
@@ -42,6 +46,7 @@ public:
         return 0;
     }
     shared_ptr<Card> clonePtr() override;
+    void printOstream(ostream& out) const override;
 private:
 };
 class TauntCard : public Card{
@@ -64,6 +69,7 @@ public:
         return 0;
     }
     shared_ptr<Card> clonePtr() override;
+    void printOstream(ostream& out) const override;
 private:
 };
 class BattlecryCard : public Card{
@@ -84,6 +90,7 @@ public:
     }
     int getBattlecryLength(int batNO, int row) const override; //Works only for 2 rows, which is the maximum length of battlecry description
     shared_ptr<Card> clonePtr() override;
+    void printOstream(ostream& out) const override;
 private:
     int battlecryID; //identifier of which battlecry effect does the card have. Starts from 1.
 };

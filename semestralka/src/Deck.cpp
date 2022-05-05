@@ -30,13 +30,11 @@ void Deck::shuffle(){
     auto rng = default_random_engine();
     std::shuffle(cards.begin(),cards.end(),rng);
 }
-void Deck::loadCards(){
-    string path("assets/cards");
-    ifstream in = loadFile(path);
+void Deck::loadCards(ifstream& in, int amount){
     string cardLine;
     stringstream parser;
     string cardName, cardType, damage, health, battlecryID;
-    for(int i = 0; i < 30; i++){
+    for(int i = 0; i < amount; i++){
         cardLine.clear();
         parser.clear();
         getline(in,cardLine);

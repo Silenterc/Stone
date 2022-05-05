@@ -11,7 +11,7 @@ public:
     shared_ptr<Card> drawCard();
     void shuffle();
     void addCard(shared_ptr<Card>);
-    void loadCards();
+    void loadCards(ifstream& in, int amount);
     size_t getSize() const{
         return size;
     }

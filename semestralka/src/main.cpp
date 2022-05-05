@@ -4,12 +4,17 @@
 using namespace std;
 #include <iostream>
 int main(){
-    Deck d;
-    d.loadCards();
-    
+    // Deck d;
+    // string path("assets/cards");
+    // ifstream in = loadFile(path);
+    // d.loadCards(in, 3);
+    // cout << d.getSize() << endl;
+    // cout << d.drawCard() -> getBattlecry() << endl;
+    // cout << d.drawCard() ->isBattlecry() << endl;
+    // cout << d.drawCard() ->isBattlecry() << endl;
     // Menu m;
     // m.init();
-     /*
+     
     Player p1("Lukas", 30),p2("Sakul", 30);
     Deck d, c;
     TauntCard obr("Obr",3,15);
@@ -17,6 +22,7 @@ int main(){
     BattlecryCard silak("Silak",10,5,1);
     BattlecryCard megaSilak("megaSilak",13,6,2);
     TauntCard megaObr("MegaObr",3,20);
+   /*
     d.addCard(silak.clonePtr());
     d.addCard(megaSilak.clonePtr());
     d.addCard(silak.clonePtr());
@@ -35,8 +41,8 @@ int main(){
     }
     p1.drawCard();
     p1.drawCard();
-    p2.print(0);
-    p1.print(1);
+    p1.print(0);
+    p2.print(1);
     
     int x,y;
     while(cin >> x >> y){

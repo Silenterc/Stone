@@ -27,6 +27,9 @@ void BasicCard::print(unsigned int flag) const{
 shared_ptr<Card> BasicCard::clonePtr(){
     return make_shared<BasicCard>(*this);
 }
+void BasicCard::printOstream(ostream& out) const{
+    out << name << ';' << "Basic Card" << ';' << damage << ';' << health << ';' << 0;
+}
 void TauntCard::print(unsigned int flag) const{
     switch(flag){
         case 1: cout << name;
@@ -42,6 +45,9 @@ void TauntCard::print(unsigned int flag) const{
 }
 shared_ptr<Card> TauntCard::clonePtr(){
     return make_shared<TauntCard>(*this);
+}
+void TauntCard::printOstream(ostream& out) const{
+    out << name << ';' << "Taunt" << ';' << damage << ';' << health << ';' << 0;   
 }
 void BattlecryCard::print(unsigned int flag) const{
     switch(flag){
@@ -62,6 +68,9 @@ void BattlecryCard::print(unsigned int flag) const{
 }
 shared_ptr<Card> BattlecryCard::clonePtr(){
     return make_shared<BattlecryCard>(*this);
+}
+void BattlecryCard::printOstream(ostream& out) const{
+    out << name << ';' << "Battlecry" << ';' << damage << ';' << health << ';' << battlecryID;
 }
 int BattlecryCard::getBattlecryLength(int batNO, int row) const{
     if(row == 1){
