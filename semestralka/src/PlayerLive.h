@@ -5,7 +5,7 @@ using namespace std;
 class PlayerLive : public Player{
 public:
     PlayerLive(const string& nm,int hlth) : Player(nm, hlth){};
-    stringstream getInput();
+    string getInput();
 protected:
 
 };

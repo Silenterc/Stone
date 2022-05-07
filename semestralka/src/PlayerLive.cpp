@@ -1,9 +1,7 @@
 #include "PlayerLive.h"
 
-stringstream PlayerLive::getInput(){
+string PlayerLive::getInput(){
     string in;
     cin >> in;
-    stringstream s;
-    s.str(in);
-    return s;
+    return in;
 }

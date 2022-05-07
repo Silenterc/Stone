@@ -27,13 +27,18 @@ shared_ptr<Card> Deck::drawCard(){
     return drawn;
 }
 void Deck::shuffle(){
-    auto rng = default_random_engine();
+    auto rd = std::random_device();
+    auto rng = default_random_engine(rd());
     std::shuffle(cards.begin(),cards.end(),rng);
 }
-void Deck::loadCards(ifstream& in, int amount){
+void Deck::loadCards(ifstream& in){
     string cardLine;
     stringstream parser;
-    string cardName, cardType, damage, health, battlecryID;
+    string cardAmount, cardName, cardType, damage, health, battlecryID;
+    getline(in, cardLine); //Get the size of the deck
+    parser.str(cardLine);
+    getline(parser,cardAmount,';');
+    int amount = stoi(cardAmount);
     for(int i = 0; i < amount; i++){
         cardLine.clear();
         parser.clear();

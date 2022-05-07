@@ -2,6 +2,9 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+void Player::chargeBoard(){
+    board.chargeB();
+}
 bool Player::playCard(int NO){
     bool played = board.addToBoard(hand.viewCard(NO));
     if(played){
@@ -9,8 +12,11 @@ bool Player::playCard(int NO){
     } 
     return played;
 }
-bool Player::attack(int attacking, int defending, Player& second){ //return false if the is a Taunt and Player wants to attack smt else
+bool Player::attack(int attacking, int defending, Player& second){ //return false if there is a Taunt and Player wants to attack smt else
     if(second.board.hasTaunt() && defending == 0){ //0 means that Player wants to attack enemy Player directly, but in this case there is a Taunt in the way
+        return false;
+    }
+    if(!(board.viewCard(attacking) -> isCharged())){ //the card cannot attack because it isnt charged(was played this round or has attacked)
         return false;
     }
     if(defending == 0){
@@ -37,5 +43,15 @@ void Player::print(unsigned int flag) const{
         cout << endl;
         board.print();
         cout << endl;
+    }
+}
+void Player::loadDeck(){
+        string path("assets/cards");
+        ifstream in = loadFile(path);
+        deck.loadCards(in);
+}
+void Player::drawThreeCards(){
+    for(int i = 0; i < 3; i++){
+        hand.drawCard(deck);
     }
 }

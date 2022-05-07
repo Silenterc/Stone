@@ -22,3 +22,8 @@ bool PlayingBoard::hasTaunt() const{
     }
     return false;
 }
+void PlayingBoard::chargeB(){
+    for(auto& c : cards){ 
+        c -> charge();
+    }
+}

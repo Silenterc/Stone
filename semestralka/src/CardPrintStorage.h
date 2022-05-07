@@ -8,7 +8,7 @@ public:
     shared_ptr<Card> viewCard(int cardNO) const; //To see which card the player has chosen to play, but not actually play it(indexing from 1) 
     void print() const;
     void printCensored() const;
-    size_t getSize(){
+    size_t getSize() const{
         return size;
     }
     void removeCard(int cardNO){

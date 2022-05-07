@@ -23,6 +23,7 @@
     "utility": "cpp",
     "iosfwd": "cpp",
     "ostream": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "random": "cpp"
   }
 }

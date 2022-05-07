@@ -9,6 +9,7 @@ public:
     void getAttacked(shared_ptr<Card> attacker, int defender); //a Card from the opposing board attacks our defender at some index(indexing from 1)
     bool addToBoard(shared_ptr<Card> crd);                     //both take damage, our defender gets erased if he dies
     bool hasTaunt() const;
+    void chargeB(); //set charged status to true for all the cards on the board, so they can attack
 private:
 };
 #endif

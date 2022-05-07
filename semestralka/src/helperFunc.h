@@ -9,8 +9,8 @@
 #include <sys/ioctl.h> 
 #include <unistd.h> 
 using namespace std;
-extern list<string> battlecryIDtoString(int ID);
-extern unsigned int getTermSize();
-extern void printSpaces(int spaces);
-extern ifstream loadFile(const string& path);
+list<string> battlecryIDtoString(int ID);
+unsigned int getTermSize();
+void printSpaces(int spaces);
+ifstream loadFile(const string& path);
 #endif
