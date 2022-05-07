@@ -17,9 +17,6 @@ public:
     virtual bool isCharged() const{
         return charged;
     }
-    size_t getNameLength() const{
-        return name.length();
-    }
     size_t getDamageLength() const;
     size_t getHealthLength() const;
     void changeHealth(int change){

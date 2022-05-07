@@ -14,6 +14,11 @@ unsigned int getTermSize(){
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
     return (unsigned int)size.ws_col;
 }
+unsigned int getTermWidth(){
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    return (unsigned int)size.ws_row;
+}
 void printSpaces(int spaces){
     for(int i = 0; i < spaces; i++){
         cout <<" ";

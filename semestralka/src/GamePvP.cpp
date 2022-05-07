@@ -19,6 +19,9 @@ void GamePvP::play(){
 }
 void GamePvP::printAll(){
     cout << "\033[H\033[2J" << flush;
+    for(unsigned int i = 0; i < getTermWidth()/4; i++){ //Printing some initial lines
+        cout << endl;
+    }
     if(playerTurn){
         player2.print(0);
         player1.print(1);

@@ -11,6 +11,7 @@
 using namespace std;
 list<string> battlecryIDtoString(int ID);
 unsigned int getTermSize();
+unsigned int getTermWidth();
 void printSpaces(int spaces);
 ifstream loadFile(const string& path);
 #endif

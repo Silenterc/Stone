@@ -11,6 +11,9 @@ public:
     string getName(){
         return name;
     }
+    size_t getNameLength() const{
+        return name.length();
+    }
     virtual void print(unsigned int flag) const = 0; //the flag tells what piece of info to print
 protected:                                                          // f.e I want to print Soldier         Giant    ...
     string name;                                                    //                     7 damage        2 damage

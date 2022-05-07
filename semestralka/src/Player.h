@@ -34,6 +34,7 @@ public:
     void printBoard() const{
         board.print();
     }
+    void printNameAndHealth(unsigned int flag) const;
     PlayingBoard& getBoard(){
         return board;
     }

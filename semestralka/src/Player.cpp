@@ -39,13 +39,33 @@ bool Player::attack(int attacking, int defending, Player& second){ //return fals
     }
     return true;
 }
+void Player::printNameAndHealth(unsigned int flag) const{
+    int spaces = getTermSize()/2 - getNameLength()/2;
+    if(flag){
+        printSpaces(spaces);
+        cout << health << " health" << endl;
+        cout << endl;
+        printSpaces(spaces);
+        cout << name << endl;
+        cout << endl;
+    } else{
+        printSpaces(spaces);
+        cout << name << endl;
+        cout << endl;
+        printSpaces(spaces);
+        cout << health << " health" << endl;
+        cout << endl;
+    }
+}
 void Player::print(unsigned int flag) const{
     if(flag){
         board.print();
         cout << endl;
         hand.print();
         cout << endl;
+        printNameAndHealth(flag);
     } else{
+        printNameAndHealth(flag);
         hand.printCensored();
         cout << endl;
         board.print();
