@@ -68,7 +68,7 @@ void GamePvP::executeCommands(PlayerLive& src, PlayerLive& trgt){
         } else if (in == "play"){
             string ind = src.getInput();
             int index = stoi(ind);
-            if(index <= 0 || index > src.handSize() || !(src.playCard(index))){
+            if(index <= 0 || index > src.handSize() || !(src.playCard(index, trgt))){
                 cout << "Could not play the requested card." << endl;
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
                 sleep(5);

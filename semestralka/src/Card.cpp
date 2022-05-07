@@ -3,6 +3,7 @@
 bool Card::attack(Entity& second){
     second.health -= damage;
     health -= second.damage;
+    uncharge();
     return true;
 }
 size_t Card::getDamageLength() const{

@@ -10,6 +10,8 @@ public:
     bool addToBoard(shared_ptr<Card> crd);                     //both take damage, our defender gets erased if he dies
     bool hasTaunt() const;
     void chargeB(); //set charged status to true for all the cards on the board, so they can attack
+    bool isFull() const override;
+    void getDamagedOrHealed(int change); //change > 0 = heal, change < 0 = damage
 private:
 };
 #endif

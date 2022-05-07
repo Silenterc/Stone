@@ -22,6 +22,9 @@ public:
     }
     size_t getDamageLength() const;
     size_t getHealthLength() const;
+    void changeHealth(int change){
+        health += change;
+    }
     virtual bool isBattlecry() const = 0;
     virtual bool isTaunt() const = 0;
     virtual size_t getTypeLength() const = 0; //string length of the type (for printing purposes)

@@ -18,6 +18,7 @@ public:
         deck = d;
     }
     void chargeBoard();
+    void dealDmgOrHealBoard(int change);
     size_t deckSize() const{
         return deck.getSize();
     }
@@ -42,8 +43,9 @@ public:
         deck.shuffle();
     }
     void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
-    bool playCard(int NO); //returns false if the board is full.
+    bool playCard(int NO, Player& enemyPlayer); //returns false if the board is full.
     bool attack(int attacking, int defending, Player& second); //a complex function for a player attacking another player with one of his cards
+    void doBattlecry(int batID, Player& enemyPlayer); //A battlecry card has been played, and this function will carry out the battlecry effect on the game
 protected:
     Deck deck;
     Hand hand;

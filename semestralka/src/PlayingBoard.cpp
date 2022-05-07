@@ -27,3 +27,20 @@ void PlayingBoard::chargeB(){
         c -> charge();
     }
 }
+bool PlayingBoard::isFull() const{
+    if(size >= MAXBOARDSIZE){
+        return true;
+    }
+    return false;
+}
+void PlayingBoard::getDamagedOrHealed(int change){
+    for(int i = 0; i < size;){
+        cards[i] -> changeHealth(change);
+        if(cards[i] -> isDead()){
+            cards.erase(cards.begin() + i);
+            size--;
+        } else{
+            i++;
+        }
+    }
+}

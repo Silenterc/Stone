@@ -5,12 +5,19 @@ using namespace std;
 void Player::chargeBoard(){
     board.chargeB();
 }
-bool Player::playCard(int NO){
-    bool played = board.addToBoard(hand.viewCard(NO));
-    if(played){
-        hand.playCard(NO);
-    } 
-    return played;
+void Player::dealDmgOrHealBoard(int change){
+    board.getDamagedOrHealed(change);
+}
+bool Player::playCard(int NO, Player& enemyPlayer){
+    bool canPlay = !(board.isFull());
+    if(canPlay){
+        if(hand.viewCard(NO) -> getBattlecry() != 0){ //The card played is a Battlecry so we need to perform the effect
+            int batID = hand.viewCard(NO) -> getBattlecry();
+            doBattlecry(batID, enemyPlayer);
+        } 
+        board.addToBoard(hand.playCard(NO)); 
+    }
+    return canPlay;
 }
 bool Player::attack(int attacking, int defending, Player& second){ //return false if there is a Taunt and Player wants to attack smt else
     if(second.board.hasTaunt() && defending == 0){ //0 means that Player wants to attack enemy Player directly, but in this case there is a Taunt in the way
@@ -53,5 +60,25 @@ void Player::loadDeck(){
 void Player::drawThreeCards(){
     for(int i = 0; i < 3; i++){
         hand.drawCard(deck);
+    }
+}
+void Player::doBattlecry(int batID, Player& enemyPlayer){
+    switch(batID){
+        case 1: drawCard(); //Draw a card and heal 1 health to your hero
+                health++;
+                return;
+        case 2: enemyPlayer.dealDmgOrHealBoard(-2); //Deal 2 damage to the enemy board
+                return;
+        case 3: dealDmgOrHealBoard(-3); //Deal 3 damage to everyone
+                enemyPlayer.dealDmgOrHealBoard(-3);
+                health -= 3;
+                enemyPlayer.health -= 3;
+                return;
+        case 4: dealDmgOrHealBoard(2); //Add 2 health to your board and hero
+                health += 2;
+                return;
+        case 5: enemyPlayer.health -= 2; //Deal 2 damage to the enemy hero
+                return;
+        default: throw invalid_argument("Invalid battlecryID");
     }
 }

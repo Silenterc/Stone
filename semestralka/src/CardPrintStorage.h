@@ -16,6 +16,7 @@ public:
         size--;
 
     }
+    virtual bool isFull() const = 0;
 protected:
     vector< shared_ptr<Card> > cards;
     size_t size;

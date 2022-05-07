@@ -5,7 +5,7 @@
 #include <queue>
 using namespace std;
 pair<string, bool> Hand::drawCard(Deck& deck){
-    if(size >= MAXHANDSIZE){
+    if(isFull()){
         return(make_pair<string,bool>(deck.drawCard() -> getName(), false));
     }
     shared_ptr<Card> newOne = deck.drawCard();
@@ -19,4 +19,10 @@ shared_ptr<Card> Hand::playCard(int cardNO){
     cards.erase(cards.begin() + (cardNO - 1));
     size--;
     return toBeRet;
+}
+bool Hand::isFull() const{
+    if(size >= MAXHANDSIZE){
+        return true;
+    }
+    return false;
 }
