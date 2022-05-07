@@ -15,6 +15,9 @@ public:
     size_t getSize() const{
         return size;
     }
+    bool isEmpty() const{
+        return size == 0 ? true : false ;
+    }
 private:
     vector< shared_ptr<Card> > cards;
     size_t size;

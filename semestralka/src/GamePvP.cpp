@@ -2,24 +2,39 @@
 using namespace std;
 void GamePvP::play(){
     initStart();
+    bool isFirstRound = true;
     while(!isDone){
-        printAll();
         if(playerTurn){
+            if(!isFirstRound){
+                player1.drawCard();
+            }
+            printAll();
             executeCommands(player1, player2);
+            if(player1.isDead() || player2.isDead()){
+                return;
+            }
             playerTurn = false;
             player2.chargeBoard();
         
         } else{
+            if(!isFirstRound){
+                player2.drawCard();
+            } else{
+                isFirstRound = false;
+            }
+            printAll();
             executeCommands(player2, player1);
+            if(player1.isDead() || player2.isDead()){
+                return;
+            }
             playerTurn = true;
             player1.chargeBoard();
-        
         }
     }
 }
 void GamePvP::printAll(){
     cout << "\033[H\033[2J" << flush;
-    for(unsigned int i = 0; i < getTermWidth()/4; i++){ //Printing some initial lines
+    for(unsigned int i = 0; i < getTermWidth()/5; i++){ //Printing some initial lines
         cout << endl;
     }
     if(playerTurn){
@@ -67,6 +82,9 @@ void GamePvP::executeCommands(PlayerLive& src, PlayerLive& trgt){
                 sleep(5);
                 continue;
             }
+            if(player1.isDead() || player2.isDead()){
+                return;
+            }
 
         } else if (in == "play"){
             string ind = src.getInput();
@@ -76,6 +94,9 @@ void GamePvP::executeCommands(PlayerLive& src, PlayerLive& trgt){
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
                 sleep(5);
                 continue;
+            }
+            if(player1.isDead() || player2.isDead()){
+                return;
             }
         } else if (in == "end"){
             return;
