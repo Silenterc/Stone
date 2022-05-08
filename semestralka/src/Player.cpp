@@ -102,3 +102,9 @@ void Player::doBattlecry(int batID, Player& enemyPlayer){
         default: throw invalid_argument("Invalid battlecryID");
     }
 }
+void Player::printOstream(ostream& out) const{
+    out << name << ';' << health << ';' << charged << endl;
+    out << deck;
+    out << hand;
+    out << board;
+}

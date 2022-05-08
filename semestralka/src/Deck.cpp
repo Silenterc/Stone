@@ -34,7 +34,7 @@ void Deck::shuffle(){
 void Deck::loadCards(ifstream& in){
     string cardLine;
     stringstream parser;
-    string cardAmount, cardName, cardType, damage, health, battlecryID;
+    string cardAmount, cardName, cardType, damage, health, battlecryID, charged;
     getline(in, cardLine); //Get the size of the deck
     parser.str(cardLine);
     getline(parser,cardAmount,';');
@@ -49,20 +49,35 @@ void Deck::loadCards(ifstream& in){
         getline(parser,damage,';');
         getline(parser,health,';');
         getline(parser,battlecryID,';');
+        getline(parser,charged,';');
         if(cardType == "Basic Card"){
             BasicCard newOne(cardName, stoi(damage), stoi(health));
+            if(charged == "1"){
+                newOne.charge();
+            }
             addCard(newOne.clonePtr());
         } else if(cardType == "Taunt"){
             TauntCard newOne(cardName, stoi(damage), stoi(health));
+            if(charged == "1"){
+                newOne.charge();
+            }
             addCard(newOne.clonePtr());
         } else if(cardType == "Battlecry"){
             BattlecryCard newOne(cardName, stoi(damage), stoi(health), stoi(battlecryID));
+            if(charged == "1"){
+                newOne.charge();
+            }
             addCard(newOne.clonePtr());
         } else{
             throw invalid_argument("Invalid card type");
         }
     }
-
+}
+void Deck::printOstream(ostream& out) const{
+    out << size << ';' << endl;
+    for(const auto& c : cards){
+        out << *c << endl;
+    }
 }
 
 

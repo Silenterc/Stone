@@ -4,21 +4,23 @@
 using namespace std;
 #include <iostream>
 int main(){
-    //Menu m;
-   // m.init();
+    Menu m;
+   m.init();
     
-    
-    // GamePvP game;
-    // game.play();
+    //  GamePvP game;
+    //  //game.saveGame();
+    //  game.play();
     
     // Deck d;
     // string path("assets/cards");
     // ifstream in = loadFile(path);
     // d.loadCards(in);
+    
     // PlayingBoard b;
     // b.addToBoard(d.drawCard());
     // b.addToBoard(d.drawCard());
     // b.chargeB();
+    // cout << b << endl;
     // Menu m;
     // m.init();
     /* 

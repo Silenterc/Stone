@@ -1,4 +1,4 @@
-PvP/AI
+PvP/AI;PLAYERTURN
 -----PLAYER 1-----
 Name;health;charged
 --DECKCARDS--
@@ -6,17 +6,14 @@ Name;Type;Damage;Health;batID;charged
 .
 .
 .
-emptyline
 --HANDCARDS--
 .
 .
 .
-emptyline
 --BOARDCARDS--
 .
 .
 .
-emptyline
 -----PLAYER 2-----
 ...
 

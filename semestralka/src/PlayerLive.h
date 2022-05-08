@@ -7,6 +7,6 @@ public:
     PlayerLive(const string& nm,int hlth) : Player(nm, hlth){};
     string getInput();
 protected:
-
+    
 };
 #endif

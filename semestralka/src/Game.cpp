@@ -23,7 +23,8 @@ void Game::executeCommands(PlayerLive& src, Player& trgt){
         printAll();
         string in = src.getInput();
         if(in == "save"){
-
+            saveGame();
+            continue;
         } else if(in == "attack"){
             string from = src.getInput();
             int fr = stoi(from);

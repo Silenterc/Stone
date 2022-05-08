@@ -104,3 +104,9 @@ void CardPrintStorage::printCensored() const{
         cout << endl;
     } 
 }
+void CardPrintStorage::printOstream(ostream& out) const{
+    out << size << ';' << endl;
+    for(const auto& c : cards){
+        out << *c << endl;
+    }
+}

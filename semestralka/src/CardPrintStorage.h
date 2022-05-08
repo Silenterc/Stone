@@ -17,11 +17,16 @@ public:
 
     }
     virtual bool isFull() const = 0;
+    friend ostream& operator <<(ostream& out, const CardPrintStorage& s){
+        s.printOstream(out);
+        return out;
+    }
 protected:
     vector< shared_ptr<Card> > cards;
     size_t size;
     int maxStorageSize;
     int prevPrinted(unsigned int row, size_t column, int prevDiff) const;
     void printStars(int stars) const;
+    void printOstream(ostream& out) const;
 };
 #endif

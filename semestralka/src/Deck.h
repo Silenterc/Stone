@@ -18,7 +18,12 @@ public:
     bool isEmpty() const{
         return size == 0 ? true : false ;
     }
+    friend ostream& operator <<(ostream& out, const Deck& d){
+        d.printOstream(out);
+        return out;
+    }
 private:
+    void printOstream(ostream& out) const;
     vector< shared_ptr<Card> > cards;
     size_t size;
 };

@@ -71,5 +71,13 @@ void GamePvP::finished() const{
     sleep(5);
 }
 void GamePvP::saveGame() const{
-    
+    string fileName = "assets/saves/";
+    fileName.append(getLocalTime());
+    ofstream saveFile(fileName);
+    if(saveFile.fail()){
+        throw invalid_argument("Could not create file.");
+    }
+    saveFile <<"PvP;" << playerTurn << endl;
+    saveFile << player1;
+    saveFile << player2;
 }

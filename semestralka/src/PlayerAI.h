@@ -6,5 +6,6 @@ class PlayerAI : public Player{
 public:
     PlayerAI(const string& nm,int hlth) : Player(nm, hlth){};
 protected:
+    
 };
 #endif
