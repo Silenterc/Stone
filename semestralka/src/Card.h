@@ -6,17 +6,8 @@
 #include <list>
 class Card : public Entity{
 public:
-    Card(const string& nm, int dmg, int hlth):Entity(nm, hlth, dmg), charged(false){};
+    Card(const string& nm, int dmg, int hlth):Entity(nm, hlth, dmg){};
     bool attack(Entity& second);
-    virtual void charge(){
-        charged = true;
-    }
-    virtual void uncharge(){
-        charged = false;
-    }
-    virtual bool isCharged() const{
-        return charged;
-    }
     size_t getDamageLength() const;
     size_t getHealthLength() const;
     void changeHealth(int change){
@@ -35,7 +26,6 @@ public:
 protected:
     virtual void printOstream(ostream& out) const = 0;
 private:
-    bool charged;
 };
 class BasicCard : public Card{
 public:

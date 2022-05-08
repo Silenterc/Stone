@@ -4,8 +4,12 @@
 using namespace std;
 #include <iostream>
 int main(){
-    GamePvP game;
-    game.play();
+    Menu m;
+    m.init();
+    
+    
+    // GamePvP game;
+    // game.play();
     
     // Deck d;
     // string path("assets/cards");

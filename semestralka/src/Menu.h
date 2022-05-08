@@ -1,17 +1,17 @@
 #ifndef MENU_H
 #define MENU_H
-#include <string>
-#include <vector>
-#include "helperFunc.h"
+#include "GamePvP.h"
 #define MENUMIDDLE 32 //how many chars are the radius of the big MENU printed
 using namespace std;
 class Menu{
 public:
-    void init(); //Prints the menu screen with options for the player to pick from
+    void init(); //Launches the menu and also the whole program loop
+    void printOptions() const; //Prints the menu screen with options for the player to pick from
     int getState(){
         return state;
     }
     void printInstructions(); //Prints instructions
+    int getMenuInput() const;
 private:
     int state;
     static vector<string> MENU; //Holds MENU written out to be printed over 7 lines

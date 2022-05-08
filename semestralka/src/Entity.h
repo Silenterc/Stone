@@ -7,8 +7,17 @@ class Entity{
 public:
     Entity(const string& nm, int hlth, int dmg = 0):name(nm), health(hlth), damage(dmg){};
     virtual ~Entity() = default;
-    bool isDead();
-    string getName(){
+    bool isDead() const;
+    virtual void charge(){
+        charged = true;
+    }
+    virtual void uncharge(){
+        charged = false;
+    }
+    virtual bool isCharged() const{
+        return charged;
+    }
+    string getName() const{
         return name;
     }
     size_t getNameLength() const{
@@ -19,6 +28,7 @@ protected:                                                          // f.e I wan
     string name;                                                    //                     7 damage        2 damage
     int health;                                                     //                     4 health        10 health
     int damage; 
+    bool charged = false;
     friend class Card; //When a card attacks a player, it should be able to change his health => has to be friend
 };
 #endif

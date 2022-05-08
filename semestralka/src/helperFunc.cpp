@@ -24,6 +24,11 @@ void printSpaces(int spaces){
         cout <<" ";
     }
 }
+void printLines(int divisor){
+    for(unsigned int i = 0; i < getTermWidth()/divisor; i++){
+        cout << endl;
+    }
+}
 ifstream loadFile(const string& path){
     ifstream in;
     in.open(path);

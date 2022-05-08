@@ -1,5 +1,5 @@
 #include "Entity.h"
-bool Entity::isDead(){
+bool Entity::isDead() const{
     if(health <= 0){
         return true;
     }

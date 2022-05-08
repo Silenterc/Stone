@@ -13,5 +13,6 @@ list<string> battlecryIDtoString(int ID);
 unsigned int getTermSize();
 unsigned int getTermWidth();
 void printSpaces(int spaces);
+void printLines(int divisor);
 ifstream loadFile(const string& path);
 #endif
