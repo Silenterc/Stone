@@ -7,8 +7,8 @@ public:
     void play() override;
     void printAll() const override;
     void initStart() override;
-    void executeCommands(PlayerLive& src, PlayerLive& trgt);
     void finished() const override;
+    void saveGame() const override;
 protected:
     PlayerLive player2;
 

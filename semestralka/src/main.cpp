@@ -4,8 +4,8 @@
 using namespace std;
 #include <iostream>
 int main(){
-    Menu m;
-    m.init();
+    //Menu m;
+   // m.init();
     
     
     // GamePvP game;

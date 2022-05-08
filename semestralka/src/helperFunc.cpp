@@ -37,3 +37,11 @@ ifstream loadFile(const string& path){
     }
     return in;
 }
+string getLocalTime(){
+    auto timeVar = time(nullptr);
+    auto time = *localtime(&timeVar);
+    stringstream tmp;
+    tmp << put_time(&time,"%d-%m-%Y,%H-%M-%S");
+    string ret = tmp.str();
+    return ret;
+}

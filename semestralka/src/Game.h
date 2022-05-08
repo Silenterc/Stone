@@ -9,6 +9,8 @@ public:
     virtual void printAll() const = 0;
     virtual void initStart() = 0;
     virtual void finished() const = 0;
+    virtual void saveGame() const = 0;
+    void executeCommands(PlayerLive& src, Player& trgt);
 protected:
     void printEnd() const;
     static vector<string> END;
