@@ -77,7 +77,8 @@ void GamePvP::saveGame() const{
     if(saveFile.fail()){
         throw invalid_argument("Could not create file.");
     }
-    saveFile <<"PvP;" << playerTurn << endl;
+    saveFile << "PvP" << endl;
+    saveFile << playerTurn << endl;
     saveFile << player1;
     saveFile << player2;
 }
