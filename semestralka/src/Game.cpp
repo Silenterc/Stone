@@ -27,7 +27,15 @@ void Game::executeCommands(PlayerLive& src, Player& trgt){
             continue;
         } else if(in == "attack"){
             string from = src.getInput();
-            int fr = stoi(from);
+            int fr;
+            try{
+                fr = stoi(from);
+            } catch(...){
+                cout << "Wrong from parameter" << endl;
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                sleep(5);
+                continue;
+            }
             if(fr <= 0 || fr > (src.boardSize())){
                 cout << "Wrong from parameter" << endl;
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -35,7 +43,15 @@ void Game::executeCommands(PlayerLive& src, Player& trgt){
                 continue;
             }
             string trg = src.getInput();
-            int to = stoi(trg);
+            int to;
+            try{
+                to = stoi(trg);
+            } catch(...){
+                cout << "Wrong target parameter" << endl;
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                sleep(5);
+                continue;
+            }
             if(to > trgt.boardSize() || to < 0){
                 cout << "Wrong target parameter" << endl;
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -54,7 +70,16 @@ void Game::executeCommands(PlayerLive& src, Player& trgt){
 
         } else if (in == "play"){
             string ind = src.getInput();
-            int index = stoi(ind);
+            int index;
+
+            try{
+                index = stoi(ind);
+            } catch(...){
+                cout << "Invalid input." << endl;
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                sleep(5);
+                continue;
+            }
             if(index <= 0 || index > src.handSize() || !src.isCharged() || !(src.playCard(index, trgt))){
                 cout << "Could not play the requested card." << endl;
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
