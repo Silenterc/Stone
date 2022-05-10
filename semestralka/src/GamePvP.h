@@ -9,8 +9,9 @@ public:
     void initStart() override;
     void finished() const override;
     void saveGame() const override;
+    void loadGame(ifstream& in) override;
 protected:
     PlayerLive player2;
-
+    void playLoaded() override;
 };
 #endif

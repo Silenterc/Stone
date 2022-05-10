@@ -51,10 +51,12 @@ public:
         p.printOstream(out);
         return out;
     }
+    void load(ifstream& in);
 protected:
     Deck deck;
     Hand hand;
     PlayingBoard board;
     void printOstream(ostream& out) const;
+    void loadInfo(ifstream& in);
 };
 #endif

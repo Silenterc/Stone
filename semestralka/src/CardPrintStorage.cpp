@@ -110,3 +110,46 @@ void CardPrintStorage::printOstream(ostream& out) const{
         out << *c << endl;
     }
 }
+void CardPrintStorage::load(ifstream& in){
+    string cardLine;
+    stringstream parser;
+    string cardAmount, cardName, cardType, damage, health, battlecryID, charged;
+    getline(in, cardLine); //Get the size of the storage
+    parser.str(cardLine);
+    getline(parser,cardAmount,';');
+    size_t amount = stoul(cardAmount);
+    size = amount;
+    for(int i = 0; i < amount; i++){
+        cardLine.clear();
+        parser.clear();
+        getline(in,cardLine);
+        parser.str(cardLine);
+        getline(parser,cardName,';');
+        getline(parser,cardType,';');
+        getline(parser,damage,';');
+        getline(parser,health,';');
+        getline(parser,battlecryID,';');
+        getline(parser,charged,';');
+        if(cardType == "Basic Card"){
+            BasicCard newOne(cardName, stoi(damage), stoi(health));
+            if(charged == "1"){
+                newOne.charge();
+            }
+            cards.push_back(newOne.clonePtr());
+        } else if(cardType == "Taunt"){
+            TauntCard newOne(cardName, stoi(damage), stoi(health));
+            if(charged == "1"){
+                newOne.charge();
+            }
+            cards.push_back(newOne.clonePtr());
+        } else if(cardType == "Battlecry"){
+            BattlecryCard newOne(cardName, stoi(damage), stoi(health), stoi(battlecryID));
+            if(charged == "1"){
+                newOne.charge();
+            }
+            cards.push_back(newOne.clonePtr());
+        } else{
+            throw invalid_argument("Invalid card type");
+        }
+    }  
+}

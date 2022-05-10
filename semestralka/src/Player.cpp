@@ -108,3 +108,21 @@ void Player::printOstream(ostream& out) const{
     out << hand;
     out << board;
 }
+void Player::load(ifstream& in){
+    loadInfo(in);
+    deck.loadCards(in);
+    hand.load(in);
+    board.load(in);
+}
+void Player::loadInfo(ifstream& in){
+    string basInfo, pname, phealth, pcharged;
+    stringstream parser;
+    getline(in, basInfo);
+    parser.str(basInfo);
+    getline(parser,pname,';');
+    getline(parser,phealth,';');
+    getline(parser,pcharged,';');
+    name = pname;
+    health = stoi(phealth);
+    charged = stoi(pcharged);
+}

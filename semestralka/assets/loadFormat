@@ -1,4 +1,6 @@
-PvP/AI;PLAYERTURN
+PvP/AI
+PLAYERTURN
+ISFIRSTROUND
 -----PLAYER 1-----
 Name;health;charged
 --DECKCARDS--

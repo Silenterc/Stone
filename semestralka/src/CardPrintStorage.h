@@ -1,7 +1,6 @@
 #ifndef CPS_H
 #define CPS_H
 #include "Deck.h"
-#include <vector>
 class CardPrintStorage{
 public:
     CardPrintStorage(int max):size(0), maxStorageSize(max){};
@@ -21,6 +20,7 @@ public:
         s.printOstream(out);
         return out;
     }
+    void load(ifstream& in);
 protected:
     vector< shared_ptr<Card> > cards;
     size_t size;

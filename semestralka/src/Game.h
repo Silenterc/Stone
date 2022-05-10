@@ -10,12 +10,15 @@ public:
     virtual void initStart() = 0;
     virtual void finished() const = 0;
     virtual void saveGame() const = 0;
+    virtual void loadGame(ifstream& in) = 0;
     void executeCommands(PlayerLive& src, Player& trgt);
 protected:
     void printEnd() const;
+    virtual void playLoaded() = 0;
     static vector<string> END;
     PlayerLive player1;
     bool playerTurn = true; //1 for player1, 0 for player 2
     bool isDone = false;
+    bool isFirstRound = true;
 };
 #endif

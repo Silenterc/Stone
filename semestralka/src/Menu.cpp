@@ -122,7 +122,15 @@ void Menu::fileMenu() const{
                 continue;
             }
             if(gameType){
-                cout << "Load pvp game" << endl;
+                GamePvP g;
+                try{
+                    g.loadGame(loaded);
+                } catch(...){
+                    cout << "Save File in wrong format" << endl;
+                    sleep(3);
+                    continue;
+                }
+                
             } else{
                 cout << "Load ai game" << endl;
              }

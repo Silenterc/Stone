@@ -2,7 +2,6 @@
 using namespace std;
 void GamePvP::play(){
     initStart();
-    bool isFirstRound = true;
     while(!isDone){
         if(playerTurn){
             player1.charge();
@@ -79,6 +78,62 @@ void GamePvP::saveGame() const{
     }
     saveFile << "PvP" << endl;
     saveFile << playerTurn << endl;
+    saveFile << isFirstRound << endl;
     saveFile << player1;
     saveFile << player2;
+}
+void GamePvP::loadGame(ifstream& in){
+    string basInfo;
+    getline(in,basInfo);
+    playerTurn = stoi(basInfo);
+    getline(in,basInfo);
+    isFirstRound = stoi(basInfo);
+    cout << "Loaded info" << endl;
+    player1.load(in);
+    player2.load(in);
+    playLoaded();
+}
+void GamePvP::playLoaded(){
+    bool justLoaded = true;
+    while(!isDone){
+        if(playerTurn){
+            if(!justLoaded){
+                player1.charge();
+            } 
+            if(!isFirstRound && !justLoaded){
+                player1.drawCard();
+            }
+            printAll();
+            executeCommands(player1, player2);
+            if(player1.isDead() || player2.isDead()){
+                finished();
+                return;
+            }
+            playerTurn = false;
+            player2.chargeBoard();
+        
+        } else{
+            if(!justLoaded){
+                player2.charge();
+            } 
+            
+            if(!isFirstRound && !justLoaded){
+                player2.drawCard();
+            }
+            if(isFirstRound){
+                isFirstRound = false;
+            } 
+            printAll();
+            executeCommands(player2, player1);
+            if(player1.isDead() || player2.isDead()){
+                finished();
+                return;
+            }
+            playerTurn = true;
+            player1.chargeBoard();
+        }
+        if(justLoaded){
+            justLoaded = false;
+        }
+    }
 }
