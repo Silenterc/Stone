@@ -17,11 +17,13 @@ public:
 protected:
     void printEnd() const;
     void playLoaded();
+    void drawsCard(bool plr);
+    unique_ptr<Player>& getPlayer(bool plr);
     static vector<string> END;
     unique_ptr<Player> player1;
     unique_ptr<Player> player2;
     bool playerTurn = true; //1 for player1, 0 for player 2
     bool isDone = false;
-    bool isFirstRound = true;
+    int isFirstRound = 2;
 };
 #endif

@@ -97,6 +97,11 @@ vector<filesystem::directory_entry> Menu::loadSaves() const{
             svs.push_back(dirIt);
         }
     }
+    sort(svs.begin(),svs.end(), 
+    [](const filesystem::directory_entry & a, const filesystem::directory_entry & b) -> bool{ 
+        return a.path().string() > b.path().string(); 
+    }
+    );
     return svs;
 }
 void Menu::fileMenu() const{

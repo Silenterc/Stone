@@ -12,7 +12,7 @@ class Player : public Entity{
 public:
     Player(const string& nm,int hlth):Entity(nm,hlth){};
     pair<string, bool> drawCard(){
-        return hand.drawCard(deck);
+        return hand.drawCard(deck);    
     }
     void setDeck(Deck& d){
         deck = d;

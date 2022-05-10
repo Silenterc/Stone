@@ -30,46 +30,31 @@ void Game::printAll() const{
     }
 }
 void Game::play(){
-    while(!isDone){
+    while(!isDone){  
+        cout << isFirstRound << endl;
+        getPlayer(playerTurn) -> charge();
+        if(isFirstRound == 0){
+            drawsCard(playerTurn);
+        }
+        printAll();
+        while(int i = getPlayer(playerTurn) -> executeTurn(getPlayer(!playerTurn))){
+            printAll();
+            if(i == 2){
+                saveGame();
+            }
+        }
+        if(getPlayer(playerTurn) -> isDead() || getPlayer(!playerTurn) -> isDead()){
+            finished();
+            return;
+        }
         if(playerTurn){
-            player1 -> charge();
-            if(!isFirstRound){
-                player1 -> drawCard();
-            }
-            printAll();
-            while(int i = player1 -> executeTurn(player2)){
-                printAll();
-                if(i == 2){
-                    saveGame();
-                }
-            }
-            if(player1 -> isDead() || player2 -> isDead()){
-                finished();
-                return;
-            }
             playerTurn = false;
-            player2 -> chargeBoard();
-
         } else{
-            player2 -> charge();
-            if(!isFirstRound){
-                player2 -> drawCard();
-            } else{
-                isFirstRound = false;
-            }
-            printAll();
-            while(int i = player2 -> executeTurn(player1)){
-                printAll();
-                if(i == 2){
-                    saveGame();
-                }
-            }
-            if(player1 -> isDead() || player2 -> isDead()){
-                finished();
-                return;
-            }
             playerTurn = true;
-            player1 -> chargeBoard();
+        }
+        getPlayer(playerTurn) -> chargeBoard();
+        if(isFirstRound){  
+            isFirstRound--;
         }
     }
 }
@@ -146,54 +131,56 @@ void Game::loadGame(ifstream& in, bool isPvP){
     player2 -> load(in);
     playLoaded();
 }
+unique_ptr<Player>& Game::getPlayer(bool plr){
+    if(plr){
+        return player1;
+    } else{
+        return player2;
+    }
+}
+void Game::drawsCard(bool plr){
+    pair <string, bool> crd = getPlayer(playerTurn) -> drawCard();
+        if(!crd.second){
+            if(crd.first.empty()){
+                printAll();
+                cout << "Your deck is empty." << endl;
+                sleep(2);
+            } else{
+                printAll();
+                cout <<"You lost: " << crd.first<< endl;
+                sleep(2);
+            }
+        } 
+}
 void Game::playLoaded(){
     bool justLoaded = true;
     while(!isDone){
+        if(!justLoaded){
+            getPlayer(playerTurn) -> charge();
+        } 
+        if(!isFirstRound && !justLoaded){
+            printAll();
+            drawsCard(playerTurn);
+        }
+        printAll();
+        while(int i = getPlayer(playerTurn) -> executeTurn(getPlayer(!playerTurn))){
+            printAll();
+            if(i == 2){
+                saveGame();
+            }
+        }
+        if(getPlayer(playerTurn) -> isDead() || getPlayer(!playerTurn) -> isDead()){
+            finished();
+            return;
+        }
         if(playerTurn){
-            if(!justLoaded){
-                player1 -> charge();
-            } 
-            if(!isFirstRound && !justLoaded){
-                player1 -> drawCard();
-            }
-            printAll();
-            while(int i = player1 -> executeTurn(player2)){
-                printAll();
-                if(i == 2){
-                    saveGame();
-                }
-            }
-            if(player1 -> isDead() || player2 -> isDead()){
-                finished();
-                return;
-            }
             playerTurn = false;
-            player2 -> chargeBoard();
-        
         } else{
-            if(!justLoaded){
-                player2 -> charge();
-            } 
-            
-            if(!isFirstRound && !justLoaded){
-                player2 -> drawCard();
-            }
-            if(isFirstRound){
-                isFirstRound = false;
-            } 
-            printAll();
-            while(int i = player2 -> executeTurn(player1)){
-                printAll();
-                if(i == 2){
-                    saveGame();
-                }
-            }
-            if(player1 -> isDead() || player2 -> isDead()){
-                finished();
-                return;
-            }
             playerTurn = true;
-            player1 -> chargeBoard();
+        }
+        getPlayer(playerTurn) -> chargeBoard();
+        if(isFirstRound){
+            isFirstRound--;
         }
         if(justLoaded){
             justLoaded = false;

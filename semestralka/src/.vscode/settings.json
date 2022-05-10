@@ -38,6 +38,7 @@
     "unordered_map": "cpp",
     "stdexcept": "cpp",
     "filesystem": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "chrono": "cpp"
   }
 }

@@ -1,6 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "Game.h"
+#include "algorithm"
 #include <filesystem>
 #define MENUMIDDLE 25 //how many chars are the radius of the big MENU printed
 using namespace std;
@@ -23,7 +24,7 @@ public:
 
     /**
      * @brief Iterates through the /saves directory and saves all the files in a vector.
-     * @return vector<filesystem::directory_entry>  returns a vector with the savefiles in the saves dir.
+     * @return returns a sorted vector with the savefiles from the saves dir.
      */
     vector<filesystem::directory_entry> loadSaves() const;
 
