@@ -29,12 +29,14 @@ void Menu::init(){
                     sleep(2);
                     break;
             case 1: {
-                        GamePvP g;
+                        Game g;
+                        g.initStartPvP();
                         g.play();
                         break;
             }
             case 2: {
-                        GamePvP ai;
+                        Game ai;
+                        ai.initStartAI();
                         ai.play();
                         break;                
             }
@@ -121,19 +123,14 @@ void Menu::fileMenu() const{
                 sleep(3);
                 continue;
             }
-            if(gameType){
-                GamePvP g;
-                try{
-                    g.loadGame(loaded);
-                } catch(...){
-                    cout << "Save File in wrong format" << endl;
-                    sleep(3);
-                    continue;
-                }
-                
-            } else{
-                cout << "Load ai game" << endl;
-             }
+            Game g;
+            try{
+                g.loadGame(loaded, gameType);
+            } catch(...){
+                cout << "Save File in wrong format" << endl;
+                sleep(3);
+                continue;
+            }
             break;
         }
 

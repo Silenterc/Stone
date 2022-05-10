@@ -52,6 +52,8 @@ public:
         return out;
     }
     void load(ifstream& in);
+    virtual unique_ptr<Player> clonePtr() = 0; 
+    virtual int executeTurn(unique_ptr<Player>& trgt) = 0;
 protected:
     Deck deck;
     Hand hand;

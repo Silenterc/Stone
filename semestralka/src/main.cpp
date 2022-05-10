@@ -1,10 +1,9 @@
 
-#include "GamePvP.h"
 #include "Menu.h"
 using namespace std;
 #include <iostream>
 int main(){
-    Menu m;
+   Menu m;
    m.init();
     
     //  GamePvP game;

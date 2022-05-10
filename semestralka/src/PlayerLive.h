@@ -6,6 +6,8 @@ class PlayerLive : public Player{
 public:
     PlayerLive(const string& nm,int hlth) : Player(nm, hlth){};
     string getInput();
+    unique_ptr<Player> clonePtr() override;
+    int executeTurn(unique_ptr<Player>& trgt) override;
 protected:
     
 };
