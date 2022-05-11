@@ -7,7 +7,7 @@ SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
 DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
-.PHONY: all compile run 
+.PHONY: all compile run valgrind 
 
 
 all: compile doc
@@ -24,4 +24,8 @@ build/%.o: src/%.cpp
 
 run: compile
 	./${LOGIN}
+
+valgrind: compile
+	valgrind ./${LOGIN}
+
 

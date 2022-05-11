@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <list>
+#include <memory>
 using namespace std;
 class Player;
 class Effect{
