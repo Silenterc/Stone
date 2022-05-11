@@ -8,6 +8,9 @@ public:
     Entity(const string& nm, int hlth, int dmg = 0):name(nm), health(hlth), damage(dmg){};
     virtual ~Entity() = default;
     bool isDead() const;
+    void changeHealth(int change){
+        health += change;
+    }
     virtual void charge(){
         charged = true;
     }

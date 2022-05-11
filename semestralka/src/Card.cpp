@@ -60,9 +60,9 @@ void BattlecryCard::print(unsigned int flag) const{
                 break;
         case 4: cout << health;
                 break;
-        case 5: cout << battlecryIDtoString(battlecryID).front(); //Printing the first line of the battlecry description
+        case 5: cout << "TODO"; //Printing the first line of the battlecry description
                 break;
-        case 6: cout << battlecryIDtoString(battlecryID).back(); //second line of the battlecry description
+        case 6: cout << "TODO"; //second line of the battlecry description
                 break;
         default: break;
     }
@@ -71,12 +71,28 @@ shared_ptr<Card> BattlecryCard::clonePtr(){
     return make_shared<BattlecryCard>(*this);
 }
 void BattlecryCard::printOstream(ostream& out) const{
-    out << name << ';' << "Battlecry" << ';' << damage << ';' << health << ';' << battlecryID << ';' << charged;
+    out << name << ';' << "Battlecry" << ';' << damage << ';' << health << ';' << *effect << ';' << charged;
 }
-int BattlecryCard::getBattlecryLength(int batNO, int row) const{
-    if(row == 1){
-        return (int)battlecryIDtoString(batNO).front().length();
-     }else{
-        return (int)battlecryIDtoString(batNO).back().length();
-     }
+int BattlecryCard::getBattlecryLength(int row) const{
+    return effect -> getLength(row);
+}
+void BattlecryCard::setEffect(string batID, int str){
+    if(batID == "dce"){
+        DrawCardEffect tmp(str);
+        effect = tmp.copyPtr();
+    } else if(batID == "bde"){
+        BoardDamageEffect tmp(str);
+        effect = tmp.copyPtr();
+    } else if(batID == "ade"){
+        AllDamageEffect tmp(str);
+        effect = tmp.copyPtr();
+    } else if(batID == "hbe"){
+        HealBoardEffect tmp(str);
+        effect = tmp.copyPtr();
+    } else if(batID == "hhe"){
+        HealHeroEffect tmp(str);
+        effect = tmp.copyPtr();
+    } else{
+        throw invalid_argument("Wrong battlecry");
+    }
 }

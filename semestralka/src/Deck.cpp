@@ -34,7 +34,7 @@ void Deck::shuffle(){
 void Deck::loadCards(ifstream& in){
     string cardLine;
     stringstream parser;
-    string cardAmount, cardName, cardType, damage, health, battlecryID, charged;
+    string cardAmount, cardName, cardType, damage, health, battlecryID, battlecryStrength, charged;
     getline(in, cardLine); //Get the size of the deck
     parser.str(cardLine);
     getline(parser,cardAmount,';');
@@ -49,6 +49,7 @@ void Deck::loadCards(ifstream& in){
         getline(parser,damage,';');
         getline(parser,health,';');
         getline(parser,battlecryID,';');
+        getline(parser,battlecryStrength,';');
         getline(parser,charged,';');
         if(cardType == "Basic Card"){
             BasicCard newOne(cardName, stoi(damage), stoi(health));
@@ -63,7 +64,8 @@ void Deck::loadCards(ifstream& in){
             }
             addCard(newOne.clonePtr());
         } else if(cardType == "Battlecry"){
-            BattlecryCard newOne(cardName, stoi(damage), stoi(health), stoi(battlecryID));
+            BattlecryCard newOne(cardName, stoi(damage), stoi(health));
+            newOne.setEffect(battlecryID, stoi(battlecryStrength));
             if(charged == "1"){
                 newOne.charge();
             }
