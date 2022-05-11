@@ -46,7 +46,7 @@ BoardDamageEffect::BoardDamageEffect(int s):Effect(s){
     effectDesc.push_front(desc);
     desc = "the enemy board";
     effectDesc.push_back(desc);
-};
+}
 void BoardDamageEffect::doEffect(Player& src, Player& trgt){
     trgt.getBoard().getDamagedOrHealed(-strength);
 }
@@ -82,7 +82,7 @@ AllDamageEffect::AllDamageEffect(int s):Effect(s){
     effectDesc.push_front(desc);
     desc = "everybody";
     effectDesc.push_back(desc);
-};
+}
 void AllDamageEffect::doEffect(Player& src, Player& trgt){
     src.getBoard().getDamagedOrHealed(-strength);
     trgt.getBoard().getDamagedOrHealed(-strength);
@@ -121,7 +121,7 @@ HealBoardEffect::HealBoardEffect(int s):Effect(s){
     effectDesc.push_front(desc);
     desc = "your board";
     effectDesc.push_back(desc);
-};
+}
 void HealBoardEffect::doEffect(Player& src, Player& trgt){
     src.getBoard().getDamagedOrHealed(strength);
 }
@@ -157,7 +157,7 @@ HealHeroEffect::HealHeroEffect(int s):Effect(s){
     effectDesc.push_front(desc);
     desc = "your hero";
     effectDesc.push_back(desc);
-};
+}
 void HealHeroEffect::doEffect(Player& src, Player& trgt){
     src.changeHealth(strength);
 }

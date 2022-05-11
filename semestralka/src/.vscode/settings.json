@@ -39,6 +39,7 @@
     "stdexcept": "cpp",
     "filesystem": "cpp",
     "istream": "cpp",
-    "chrono": "cpp"
+    "chrono": "cpp",
+    "iomanip": "cpp"
   }
 }

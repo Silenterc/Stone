@@ -31,8 +31,7 @@ string getLocalTime(){
     auto timeVar = time(nullptr);
     auto time = *localtime(&timeVar);
     stringstream tmp;
-    tmp << "l";
-   // tmp << put_time(&time,"%d-%m-%Y,%H-%M-%S");
+    tmp << put_time(&time,"%d-%m-%Y,%H-%M-%S");
     string ret = tmp.str();
     return ret;
 }
