@@ -11,8 +11,8 @@ DrawCardEffect::DrawCardEffect(int s):Effect(s){
     effectDesc.push_front(desc);
 
 }
-void DrawCardEffect::doEffect(unique_ptr<Player>& src, unique_ptr<Player>& trgt){
-    src -> drawCard();
+void DrawCardEffect::doEffect(Player& src, Player& trgt){
+    src.drawCard();
 }
 void DrawCardEffect::printOstream(ostream& out) const{
     out << "dce;" << strength;
@@ -47,8 +47,8 @@ BoardDamageEffect::BoardDamageEffect(int s):Effect(s){
     desc = "the enemy board";
     effectDesc.push_back(desc);
 };
-void BoardDamageEffect::doEffect(unique_ptr<Player>& src, unique_ptr<Player>& trgt){
-    src -> getBoard().getDamagedOrHealed(-strength);
+void BoardDamageEffect::doEffect(Player& src, Player& trgt){
+    trgt.getBoard().getDamagedOrHealed(-strength);
 }
 void BoardDamageEffect::printOstream(ostream& out) const{
     out << "bde;" << strength;
@@ -70,7 +70,6 @@ int BoardDamageEffect::getLength(int row){
             return effectDesc.back().size();
         }
         return 0;
-        return 0;
     }
 }
 unique_ptr<Effect> BoardDamageEffect::copyPtr(){
@@ -84,11 +83,11 @@ AllDamageEffect::AllDamageEffect(int s):Effect(s){
     desc = "everybody";
     effectDesc.push_back(desc);
 };
-void AllDamageEffect::doEffect(unique_ptr<Player>& src, unique_ptr<Player>& trgt){
-    src -> getBoard().getDamagedOrHealed(-strength);
-    trgt -> getBoard().getDamagedOrHealed(-strength);
-    src -> changeHealth(-strength);
-    trgt -> changeHealth(-strength);
+void AllDamageEffect::doEffect(Player& src, Player& trgt){
+    src.getBoard().getDamagedOrHealed(-strength);
+    trgt.getBoard().getDamagedOrHealed(-strength);
+    src.changeHealth(-strength);
+    trgt.changeHealth(-strength);
 }
 void AllDamageEffect::printOstream(ostream& out) const{
     out << "ade;" << strength;
@@ -123,8 +122,8 @@ HealBoardEffect::HealBoardEffect(int s):Effect(s){
     desc = "your board";
     effectDesc.push_back(desc);
 };
-void HealBoardEffect::doEffect(unique_ptr<Player>& src, unique_ptr<Player>& trgt){
-    src -> getBoard().getDamagedOrHealed(strength);
+void HealBoardEffect::doEffect(Player& src, Player& trgt){
+    src.getBoard().getDamagedOrHealed(strength);
 }
 void HealBoardEffect::printOstream(ostream& out) const{
     out << "hbe;" << strength;
@@ -159,8 +158,8 @@ HealHeroEffect::HealHeroEffect(int s):Effect(s){
     desc = "your hero";
     effectDesc.push_back(desc);
 };
-void HealHeroEffect::doEffect(unique_ptr<Player>& src, unique_ptr<Player>& trgt){
-    src -> changeHealth(strength);
+void HealHeroEffect::doEffect(Player& src, Player& trgt){
+    src.changeHealth(strength);
 }
 void HealHeroEffect::printOstream(ostream& out) const{
     out << "hhe;" << strength;

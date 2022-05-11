@@ -34,21 +34,13 @@ int CardPrintStorage::prevPrinted(unsigned int row, size_t column, int prevDiff)
         }
         case(5):{
             int spc = 0;
-            int potentialBatID = cards[column - 1] -> getBattlecry();
-            if(!potentialBatID){
-                spc -= cards[column - 1] -> getHealthLength();
-            } else{
-                spc = cards[column - 1] -> getBattlecryLength(1) - cards[column - 1] -> getHealthLength();
-            }
+            spc = (cards[column - 1] -> getBattlecryLength(1)) - (cards[column - 1] -> getHealthLength());
             spc += prevDiff;
             return spc;
         }
         case(6):{
             int spc = 0;
-            int potentialBatID = cards[column - 1] -> getBattlecry();
-            if(potentialBatID){
-                spc = cards[column - 1] -> getBattlecryLength(2) - cards[column - 1] -> getBattlecryLength(1);
-            }
+            spc = (cards[column - 1] -> getBattlecryLength(2)) - (cards[column - 1] -> getBattlecryLength(1));
             spc += prevDiff;
             return spc;
         }

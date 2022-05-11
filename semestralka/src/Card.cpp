@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "Player.h"
 #include <iostream>
 bool Card::attack(Entity& second){
     second.health -= damage;
@@ -28,8 +29,11 @@ void BasicCard::print(unsigned int flag) const{
 shared_ptr<Card> BasicCard::clonePtr(){
     return make_shared<BasicCard>(*this);
 }
+void BasicCard::doBattlecry(Player& src, Player& trgt){
+
+}
 void BasicCard::printOstream(ostream& out) const{
-    out << name << ';' << "Basic Card" << ';' << damage << ';' << health << ';' << 0 << ';' << charged;
+    out << name << ';' << "Basic Card" << ';' << damage << ';' << health << ';' << 0 << ';' << 0 << ';' << charged;
 }
 void TauntCard::print(unsigned int flag) const{
     switch(flag){
@@ -47,8 +51,11 @@ void TauntCard::print(unsigned int flag) const{
 shared_ptr<Card> TauntCard::clonePtr(){
     return make_shared<TauntCard>(*this);
 }
+void TauntCard::doBattlecry(Player& src, Player& trgt){
+
+}
 void TauntCard::printOstream(ostream& out) const{
-    out << name << ';' << "Taunt" << ';' << damage << ';' << health << ';' << 0 << ';' << charged;   
+    out << name << ';' << "Taunt" << ';' << damage << ';' << health << ';' << 0 << ';' << 0 << ';' << charged;   
 }
 void BattlecryCard::print(unsigned int flag) const{
     switch(flag){
@@ -60,15 +67,18 @@ void BattlecryCard::print(unsigned int flag) const{
                 break;
         case 4: cout << health;
                 break;
-        case 5: cout << "TODO"; //Printing the first line of the battlecry description
+        case 5: effect -> printEffect(1); //Printing the first line of the battlecry description
                 break;
-        case 6: cout << "TODO"; //second line of the battlecry description
+        case 6: effect -> printEffect(2); //second line of the battlecry description
                 break;
         default: break;
     }
 }
 shared_ptr<Card> BattlecryCard::clonePtr(){
     return make_shared<BattlecryCard>(*this);
+}
+void BattlecryCard::doBattlecry(Player& src, Player& trgt){
+    effect -> doEffect(src, trgt);
 }
 void BattlecryCard::printOstream(ostream& out) const{
     out << name << ';' << "Battlecry" << ';' << damage << ';' << health << ';' << *effect << ';' << charged;

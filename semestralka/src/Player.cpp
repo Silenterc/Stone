@@ -11,10 +11,7 @@ void Player::dealDmgOrHealBoard(int change){
 bool Player::playCard(int NO, Player& enemyPlayer){
     bool canPlay = !(board.isFull());
     if(canPlay){
-        if(hand.viewCard(NO) -> getBattlecry() != 0){ //The card played is a Battlecry so we need to perform the effect
-            int batID = hand.viewCard(NO) -> getBattlecry();
-            doBattlecry(batID, enemyPlayer);
-        } 
+        hand.viewCard(NO) -> doBattlecry(*this, enemyPlayer); 
         board.addToBoard(hand.playCard(NO)); 
     }
     return canPlay;
