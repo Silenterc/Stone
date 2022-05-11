@@ -4,6 +4,7 @@
 #include "Hand.h"
 #include "Deck.h"
 #include "PlayingBoard.h"
+#include <limits>
 #include <sstream>
 #include <iostream>
 #include <fstream>
