@@ -24,6 +24,7 @@ void Menu::init(){
         cout << "\033[H\033[2J" << flush;   
         printOptions();
         switch(getMenuInput()){
+            case -1: return;
             case 0: cout <<"Invalid input, please try again." << endl;
                     cin.ignore(numeric_limits<streamsize>::max(),'\n');
                     sleep(2);
@@ -79,6 +80,9 @@ void Menu::printOptions() const{
 int Menu::getMenuInput() const{
     string in;
     cin >> in;
+    if(in=="exit"){
+        return -1;
+    }
     int num;
     try{
         num = stoi(in);

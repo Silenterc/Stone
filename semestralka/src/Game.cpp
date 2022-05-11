@@ -39,6 +39,9 @@ void Game::play(){
         printAll();
         while(int i = getPlayer(playerTurn) -> executeTurn(getPlayer(!playerTurn))){
             printAll();
+            if(i == -1){
+                return;
+            }
             if(i == 2){
                 saveGame();
             }

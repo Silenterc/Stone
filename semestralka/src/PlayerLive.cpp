@@ -82,7 +82,9 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
         return 1;
     } else if (in == "end"){
         return 0;
-    } else{
+    }  else if(in == "exit"){
+        return -1;
+    }else{
         cout << "Unknown command." << endl;
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
         sleep(5);
