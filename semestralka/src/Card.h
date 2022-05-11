@@ -1,9 +1,13 @@
-#pragma once
+
 #ifndef CARD_H
 #define CARD_H
 #include "helperFunc.h"
 #include "Entity.h"
-#include "Effect.h"
+#include "Effects/AllDamageEffect.h"
+#include "Effects/BoardDamageEffect.h"
+#include "Effects/DrawCardEffect.h"
+#include "Effects/HealBoardEffect.h"
+#include "Effects/HealHeroEffect.h"
 #include <list>
 class Card : public Entity{
 public:
