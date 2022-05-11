@@ -10,7 +10,6 @@
 #include <unistd.h> 
 #include <ctime>
 using namespace std;
-list<string> battlecryIDtoString(int ID);
 unsigned int getTermSize();
 unsigned int getTermWidth();
 void printSpaces(int spaces);
