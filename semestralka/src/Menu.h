@@ -32,7 +32,7 @@ public:
      * @brief Is responsible for handling user input regarding choosing a Save File to load.
      * @return 0 if unsuccessful, otherwise the number the user has chosen
      */
-    int saveInput() const;
+    unsigned long saveInput() const;
     bool extractGameType(ifstream&) const;
 private:
     static vector<string> MENU; //Holds MENU written out to be printed over 7 lines

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <queue>
 using namespace std;
-shared_ptr<Card> CardPrintStorage::viewCard(int cardNO) const{
+shared_ptr<Card> CardPrintStorage::viewCard(unsigned long cardNO) const{
     return cards[cardNO - 1];
 }
 
@@ -54,7 +54,7 @@ void CardPrintStorage::print() const{
     int prevDiff = 0;
     queue<int> prevDifferences; //I need to keep track of the previous differences in spaces, and this queue does it well
     if(size > 0){
-        for(int i = 0; i < size - 1; i++){ //For the first row to be printed (card Names), there obviously are not any previous differences
+        for(unsigned long i = 0; i < size - 1; i++){ //For the first row to be printed (card Names), there obviously are not any previous differences
             prevDifferences.push(0);
         }
     }
@@ -105,13 +105,13 @@ void CardPrintStorage::printOstream(ostream& out) const{
 void CardPrintStorage::load(ifstream& in){
     string cardLine;
     stringstream parser;
-    string cardAmount, cardName, cardType, damage, health, battlecryID, charged;
+    string cardAmount, cardName, cardType, damage, health, battlecryID, battlecryStrength, charged;
     getline(in, cardLine); //Get the size of the storage
     parser.str(cardLine);
     getline(parser,cardAmount,';');
     size_t amount = stoul(cardAmount);
     size = amount;
-    for(int i = 0; i < amount; i++){
+    for(unsigned long i = 0; i < amount; i++){
         cardLine.clear();
         parser.clear();
         getline(in,cardLine);
@@ -121,6 +121,7 @@ void CardPrintStorage::load(ifstream& in){
         getline(parser,damage,';');
         getline(parser,health,';');
         getline(parser,battlecryID,';');
+        getline(parser,battlecryStrength,';');
         getline(parser,charged,';');
         if(cardType == "Basic Card"){
             BasicCard newOne(cardName, stoi(damage), stoi(health));
@@ -139,6 +140,7 @@ void CardPrintStorage::load(ifstream& in){
             if(charged == "1"){
                 newOne.charge();
             }
+            newOne.setEffect(battlecryID, stoi(battlecryStrength));
             cards.push_back(newOne.clonePtr());
         } else{
             throw invalid_argument("Invalid card type");

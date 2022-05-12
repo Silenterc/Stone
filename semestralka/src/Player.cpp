@@ -8,7 +8,7 @@ void Player::chargeBoard(){
 void Player::dealDmgOrHealBoard(int change){
     board.getDamagedOrHealed(change);
 }
-bool Player::playCard(int NO, Player& enemyPlayer){
+bool Player::playCard(unsigned long NO, Player& enemyPlayer){
     bool canPlay = !(board.isFull());
     if(canPlay){
         hand.viewCard(NO) -> doBattlecry(*this, enemyPlayer); 

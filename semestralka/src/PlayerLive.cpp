@@ -23,7 +23,7 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
             sleep(5);
             return 1;
         }
-        if(fr <= 0 || fr > (boardSize())){
+        if(fr <= 0 || fr > (int)(boardSize())){
             cout << "Wrong from parameter" << endl;
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             sleep(5);
@@ -39,7 +39,7 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
             sleep(5);
             return 1;
         }
-        if(to > trgt -> boardSize() || to < 0){
+        if(to > (int)(trgt -> boardSize()) || to < 0){
             cout << "Wrong target parameter" << endl;
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             sleep(5);
@@ -61,7 +61,7 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
         int index;
 
         try{
-            index = stoi(ind);
+            index = stoul(ind);
         } catch(...){
             cout << "Invalid input." << endl;
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -69,7 +69,7 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
             return 1;
         }
 
-        if(index <= 0 || index > handSize() || !isCharged() || !(playCard(index, *trgt))){
+        if(index <= 0 || (size_t)index > handSize() || !isCharged() || !(playCard(index, *trgt))){
             cout << "Could not play the requested card." << endl;
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             sleep(5);

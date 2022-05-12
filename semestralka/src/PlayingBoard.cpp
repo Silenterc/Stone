@@ -34,7 +34,7 @@ bool PlayingBoard::isFull() const{
     return false;
 }
 void PlayingBoard::getDamagedOrHealed(int change){
-    for(int i = 0; i < size;){
+    for(unsigned long i = 0; i < size;){
         cards[i] -> changeHealth(change);
         if(cards[i] -> isDead()){
             cards.erase(cards.begin() + i);

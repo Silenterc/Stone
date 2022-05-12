@@ -33,6 +33,6 @@ int HealBoardEffect::getLength(int row){
         return 0;
     }
 }
-unique_ptr<Effect> HealBoardEffect::copyPtr(){
-    return make_unique<HealBoardEffect> (*this);
+shared_ptr<Effect> HealBoardEffect::copyPtr(){
+    return make_shared<HealBoardEffect> (*this);
 }

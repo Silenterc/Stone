@@ -31,14 +31,26 @@ void Menu::init(){
                     break;
             case 1: {
                         Game g;
-                        g.initStartPvP();
-                        g.play();
+                        try{
+                            g.initStartPvP();
+                            g.play();
+                        } catch(...){
+                            cout << "Could not load Game/damaged files" << endl;
+                            sleep(2);
+                            break;
+                        }
                         break;
             }
             case 2: {
                         Game ai;
-                        ai.initStartAI();
-                        ai.play();
+                        try{
+                            ai.initStartAI();
+                            ai.play();
+                        } catch(...){
+                            cout << "Could not load Game/damaged files" << endl;
+                            sleep(2);
+                            break;
+                        }
                         break;                
             }
             case 3: {
@@ -112,7 +124,7 @@ void Menu::fileMenu() const{
     vector<filesystem::directory_entry> saves = loadSaves();
     while(true){
         printSaves(saves);
-        int in = saveInput();
+        unsigned long in = saveInput();
         if(in == 0 || in > saves.size()){
             cout << "Wrong input." << endl;
             sleep(3);
@@ -155,17 +167,17 @@ void Menu::printSaves(vector<filesystem::directory_entry> svs) const{
         i++;
     } 
 }
-int Menu::saveInput() const{
+unsigned long Menu::saveInput() const{
     cout << endl;
     cout << "Which Save File would you like to choose?" << endl;
     int i = 0;
-    if(!(cin >> i)){
+    if(!(cin >> i) || i < 0){
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
         return 0;
     }
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    return i;
+    return (unsigned long)i;
 }
 bool Menu::extractGameType(ifstream& in) const{
     string type;

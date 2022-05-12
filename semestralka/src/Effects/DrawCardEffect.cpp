@@ -36,6 +36,6 @@ int DrawCardEffect::getLength(int row){
         return 0;
     }
 }
-unique_ptr<Effect> DrawCardEffect::copyPtr(){
-    return make_unique<DrawCardEffect> (*this);
+shared_ptr<Effect> DrawCardEffect::copyPtr(){
+    return make_shared<DrawCardEffect> (*this);
 }

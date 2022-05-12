@@ -33,6 +33,6 @@ int HealHeroEffect::getLength(int row){
         return 0;
     }
 }
-unique_ptr<Effect> HealHeroEffect::copyPtr(){
-    return make_unique<HealHeroEffect> (*this);
+shared_ptr<Effect> HealHeroEffect::copyPtr(){
+    return make_shared<HealHeroEffect> (*this);
 }

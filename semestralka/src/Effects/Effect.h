@@ -11,7 +11,7 @@ public:
     virtual void doEffect(Player& src, Player& trgt) = 0;
     virtual void printEffect(unsigned int flag) = 0;
     virtual int getLength(int row) = 0;
-    virtual unique_ptr<Effect> copyPtr() = 0;
+    virtual shared_ptr<Effect> copyPtr() = 0;
     friend ostream& operator <<(ostream& out, const Effect& e){
         e.printOstream(out);
         return out;

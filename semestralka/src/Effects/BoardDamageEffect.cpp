@@ -33,6 +33,6 @@ int BoardDamageEffect::getLength(int row){
         return 0;
     }
 }
-unique_ptr<Effect> BoardDamageEffect::copyPtr(){
-    return make_unique<BoardDamageEffect> (*this);
+shared_ptr<Effect> BoardDamageEffect::copyPtr(){
+    return make_shared<BoardDamageEffect> (*this);
 }

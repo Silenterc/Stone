@@ -36,6 +36,6 @@ int AllDamageEffect::getLength(int row){
         return 0;
     }
 }
-unique_ptr<Effect> AllDamageEffect::copyPtr(){
-    return make_unique<AllDamageEffect> (*this);
+shared_ptr<Effect> AllDamageEffect::copyPtr(){
+    return make_shared<AllDamageEffect> (*this);
 }
