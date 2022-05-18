@@ -1,54 +1,55 @@
 #include "PlayerLive.h"
 
-string PlayerLive::getInput(){
+string PlayerLive::getInput() const{
     string in;
-    cin >> in;
+    if(!(cin >> in)){
+        clearerr(stdin);
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cin.clear();
+        throw invalid_argument("EOF");
+    }
     return in;
 }
 unique_ptr<Player> PlayerLive::clonePtr(){
     return make_unique<PlayerLive>(*this);
 }
 int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
-    string in = getInput();
+    string in;
+    try{
+        in = getInput();
+    } catch(...){
+        printException("Unknown command.", false);
+        return 1;
+    }
     if(in == "save"){
         return 2;
     } else if(in == "attack"){
-        string from = getInput();
         int fr;
         try{
+            string from = getInput();
             fr = stoi(from);
         } catch(...){
-            cout << "Wrong from parameter" << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Wrong from parameter.", false);
             return 1;
         }
         if(fr <= 0 || fr > (int)(boardSize())){
-            cout << "Wrong from parameter" << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Wrong from parameter.", true);
             return 1;
         }
-        string trg = getInput();
         int to;
         try{
+            string trg = getInput();
             to = stoi(trg);
         } catch(...){
-            cout << "Wrong target parameter" << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Wrong target parameter.", false);
             return 1;
         }
         if(to > (int)(trgt -> boardSize()) || to < 0){
-            cout << "Wrong target parameter" << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Wrong target parameter.", true);
             return 1;
         }
         if(!(attack(fr, to, *trgt))){
-            cout << "Could not attack." << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Could not attack.", true);
             return 1;
         }
         if(isDead() || trgt -> isDead()){
@@ -57,22 +58,17 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
         return 1;
 
     } else if (in == "play"){
-        string ind = getInput();
-        int index;
-
+        unsigned long index;
         try{
+            string ind = getInput();
             index = stoul(ind);
         } catch(...){
-            cout << "Invalid input." << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+            printException("Invalid input.", false);
             return 1;
         }
 
-        if(index <= 0 || (size_t)index > handSize() || !isCharged() || !(playCard(index, *trgt))){
-            cout << "Could not play the requested card." << endl;
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            sleep(5);
+        if(index <= 0 || index > handSize() || !isCharged() || !(playCard(index, *trgt))){
+            printException("Could not play the requested card.", true);
             return 1;
         }
         uncharge();
@@ -85,11 +81,23 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
     }  else if(in == "exit"){
         return -1;
     }else{
-        cout << "Unknown command." << endl;
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        sleep(5);
+        printException("Unknown command.", true);
         return 1;
     }  
     return 0;           
     
+}
+void PlayerLive::printConfirmation() const{
+    cout << "\033[H\033[2J" << flush;
+    printLines(5);
+    printSpaces((getTermWidth() - 22)/2);
+    cout << "type anything to switch" << endl;
+    try{
+        getInput();
+    } catch(...){
+        clearerr(stdin);
+        cin.clear();
+        return;
+    }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }

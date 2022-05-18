@@ -12,7 +12,7 @@ vector<string> Menu::MENU = {{" I      I     I-------     I      I     I      I 
 filesystem::path Menu::savesPath = {"assets/saves"};
 void Menu::printMENU() const{
     for(const auto& row : MENU){
-        printSpaces((getTermSize()/2) - MENUMIDDLE);
+        printSpaces((getTermWidth()/2) - MENUMIDDLE);
         for(const auto& col : row){
             cout << col;
         }
@@ -26,7 +26,6 @@ void Menu::init(){
         switch(getMenuInput()){
             case -1: return;
             case 0: cout <<"Invalid input, please try again." << endl;
-                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
                     sleep(2);
                     break;
             case 1: {
@@ -91,7 +90,11 @@ void Menu::printOptions() const{
 }
 int Menu::getMenuInput() const{
     string in;
-    cin >> in;
+    if(!(cin >> in)){
+        clearerr(stdin);
+        cin.clear();
+        return 0;
+    }
     if(in=="exit"){
         return -1;
     }
@@ -99,9 +102,11 @@ int Menu::getMenuInput() const{
     try{
         num = stoi(in);
     } catch(...){
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         return 0;
     }
     if(num > 4 || num < 1){
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         return 0;
     }
     return num;

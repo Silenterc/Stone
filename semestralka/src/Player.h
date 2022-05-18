@@ -8,6 +8,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#define CONFIGPATH "assets/config"
 using namespace std;
 class Player : public Entity{
 public:
@@ -39,8 +40,9 @@ public:
     PlayingBoard& getBoard(){
         return board;
     }
-    void drawThreeCards();
-    void loadDeck();
+    void drawXCards(int x);
+    void loadDeck(ifstream& in);
+    void loadInfo(ifstream& in);
     void shuffleDeck(){
         deck.shuffle();
     }
@@ -55,11 +57,11 @@ public:
     void load(ifstream& in);
     virtual unique_ptr<Player> clonePtr() = 0; 
     virtual int executeTurn(unique_ptr<Player>& trgt) = 0;
+    virtual void printConfirmation() const = 0;
 protected:
     Deck deck;
     Hand hand;
     PlayingBoard board;
     void printOstream(ostream& out) const;
-    void loadInfo(ifstream& in);
 };
 #endif

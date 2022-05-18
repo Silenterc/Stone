@@ -7,6 +7,7 @@ public:
     PlayerAI(const string& nm,int hlth) : Player(nm, hlth){};
     unique_ptr<Player> clonePtr() override;
     int executeTurn(unique_ptr<Player>& trgt) override;
+    void printConfirmation() const override{};
 protected:
     
 };

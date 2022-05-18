@@ -1,3 +1,5 @@
+#CREDIT FOR THE BASE OF THIS MAKEFILE GOES TO RADEK HUSEK, 
+#https://gitlab.fit.cvut.cz/husekrad/pa2-cvika-2022/blob/master/cv10/semestralka/Makefile
 LOGIN = zimaluk1
 CXX = g++
 BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic  
@@ -33,7 +35,7 @@ run: compile
 	./${LOGIN}
 
 valgrind: compile
-	valgrind ./${LOGIN}
+	valgrind --leak-check=full ./${LOGIN}
 clean: 
 	rm -rf build 
 	

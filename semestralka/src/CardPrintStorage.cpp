@@ -48,8 +48,8 @@ int CardPrintStorage::prevPrinted(unsigned int row, size_t column, int prevDiff)
     }
 }
 void CardPrintStorage::print() const{
-    int SPACESCONSTANT = getTermSize()/10; //By how many spaces to indent the first card
-    int middleSpaces = (getTermSize() - 2 * SPACESCONSTANT)/maxStorageSize;//The base amount of spaces between cards
+    int SPACESCONSTANT = getTermWidth()/10; //By how many spaces to indent the first card
+    int middleSpaces = (getTermWidth() - 2 * SPACESCONSTANT)/maxStorageSize;//The base amount of spaces between cards
     int spaces = 0;
     int prevDiff = 0;
     queue<int> prevDifferences; //I need to keep track of the previous differences in spaces, and this queue does it well
@@ -80,8 +80,8 @@ void CardPrintStorage::printStars(int stars) const{
     }
 }
 void CardPrintStorage::printCensored() const{
-    int SPACESCONSTANT = getTermSize()/10;
-    int middleSpaces = (getTermSize() - 2 * SPACESCONSTANT)/maxStorageSize;
+    int SPACESCONSTANT = getTermWidth()/10;
+    int middleSpaces = (getTermWidth() - 2 * SPACESCONSTANT)/maxStorageSize;
     int spaces = 0;
     for(unsigned int l = 1; l < 5; l++){
         for(size_t i = 0; i < size; i++){

@@ -3,6 +3,7 @@
 #include "PlayerLive.h"
 #include "PlayerAI.h"
 #define ENDMIDDLE 18
+#define FIRSTTURNDRAW 3
 class Game{
 public:
     Game(){};
@@ -18,6 +19,7 @@ protected:
     void printEnd() const;
     void playLoaded();
     void drawsCard(bool plr);
+    void changePlayerTurn();
     unique_ptr<Player>& getPlayer(bool plr);
     static vector<string> END;
     unique_ptr<Player> player1;

@@ -3,7 +3,10 @@
     "limits": "cpp",
     "istream": "cpp",
     "memory": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "iostream": "cpp",
+    "iosfwd": "cpp",
+    "ostream": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "/usr/bin/clang",
   "C_Cpp_Runner.cppCompilerPath": "/usr/bin/clang++",

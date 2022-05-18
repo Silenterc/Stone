@@ -11,7 +11,7 @@ vector<string> Game::END = {
 };
 void Game::printEnd() const{
     for(const auto& row : END){
-        printSpaces((getTermSize()/2) - ENDMIDDLE);
+        printSpaces((getTermWidth()/2) - ENDMIDDLE);
         for(const auto& col : row){
             cout << col;
         }
@@ -31,7 +31,6 @@ void Game::printAll() const{
 }
 void Game::play(){
     while(!isDone){  
-        cout << isFirstRound << endl;
         getPlayer(playerTurn) -> charge();
         if(isFirstRound == 0){
             drawsCard(playerTurn);
@@ -46,19 +45,23 @@ void Game::play(){
                 saveGame();
             }
         }
+        getPlayer(playerTurn) -> printConfirmation();
         if(getPlayer(playerTurn) -> isDead() || getPlayer(!playerTurn) -> isDead()){
             finished();
             return;
         }
-        if(playerTurn){
-            playerTurn = false;
-        } else{
-            playerTurn = true;
-        }
+        changePlayerTurn();
         getPlayer(playerTurn) -> chargeBoard();
         if(isFirstRound){  
             isFirstRound--;
         }
+    }
+}
+void Game::changePlayerTurn(){
+    if(playerTurn){
+        playerTurn = false;
+    } else{
+        playerTurn = true;
     }
 }
 void Game::initStartPvP(){
@@ -66,24 +69,30 @@ void Game::initStartPvP(){
     PlayerLive p2("Player 2", 30);
     player1 = p1.clonePtr();
     player2 = p2.clonePtr();
-    player1 -> loadDeck();
-    player2 -> loadDeck();
+    ifstream in = loadFile(CONFIGPATH);
+    player1 -> loadInfo(in);
+    player1 -> loadDeck(in);
+    player2 -> loadInfo(in);
+    player2 -> loadDeck(in);
     player1 -> shuffleDeck();
     player2 -> shuffleDeck();
-    player1 -> drawThreeCards();
-    player2 -> drawThreeCards();
+    player1 -> drawXCards(FIRSTTURNDRAW);
+    player2 -> drawXCards(FIRSTTURNDRAW);
 }
 void Game::initStartAI(){
     PlayerLive p1("Player 1", 30);
     PlayerAI p2("Player 2", 30);
     player1 = p1.clonePtr();
     player2 = p2.clonePtr();
-    player1 -> loadDeck();
-    player2 -> loadDeck();
+    ifstream in = loadFile(CONFIGPATH);
+    player1 -> loadInfo(in);
+    player1 -> loadDeck(in);
+    player2 -> loadInfo(in);
+    player2 -> loadDeck(in);
     player1 -> shuffleDeck();
     player2 -> shuffleDeck();
-    player1 -> drawThreeCards();
-    player2 -> drawThreeCards();
+    player1 -> drawXCards(FIRSTTURNDRAW);
+    player2 -> drawXCards(FIRSTTURNDRAW);
 }
 void Game::finished() const{
     cout << "\033[H\033[2J" << flush;

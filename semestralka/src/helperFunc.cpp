@@ -1,10 +1,10 @@
 #include "helperFunc.h"
-unsigned int getTermSize(){
+unsigned int getTermWidth(){
     struct winsize size;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
     return (unsigned int)size.ws_col;
 }
-unsigned int getTermWidth(){
+unsigned int getTermHeight(){
     struct winsize size;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
     return (unsigned int)size.ws_row;
@@ -15,9 +15,18 @@ void printSpaces(int spaces){
     }
 }
 void printLines(int divisor){
-    for(unsigned int i = 0; i < getTermWidth()/divisor; i++){
+    for(unsigned int i = 0; i < getTermHeight()/divisor; i++){
         cout << endl;
     }
+}
+void printException(const string& ex, bool shouldIgnore){
+    if(shouldIgnore){
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    cout << ex << endl;
+    clearerr(stdin);
+    cin.clear();
+    sleep(3);
 }
 ifstream loadFile(const string& path){
     ifstream in;

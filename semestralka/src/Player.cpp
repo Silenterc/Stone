@@ -37,7 +37,7 @@ bool Player::attack(int attacking, int defending, Player& second){ //return fals
     return true;
 }
 void Player::printNameAndHealth(unsigned int flag) const{
-    int spaces = getTermSize()/2 - getNameLength()/2;
+    int spaces = getTermWidth()/2 - getNameLength()/2;
     if(flag){
         printSpaces(spaces);
         cout << health << " health" << endl;
@@ -69,13 +69,11 @@ void Player::print(unsigned int flag) const{
         cout << endl;
     }
 }
-void Player::loadDeck(){
-        string path("assets/cards");
-        ifstream in = loadFile(path);
-        deck.loadCards(in);
+void Player::loadDeck(ifstream& in){
+    deck.loadCards(in);
 }
-void Player::drawThreeCards(){
-    for(int i = 0; i < 3; i++){
+void Player::drawXCards(int x){
+    for(int i = 0; i < x; i++){
         hand.drawCard(deck);
     }
 }
