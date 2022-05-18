@@ -3,6 +3,35 @@
 using namespace std;
 #include <iostream>
 int main(){
+    //   Menu m;
+    //   m.init();
+      Deck a, b;
+      PlayerAI test("ne", 30);
+      PlayerLive tstp("jo", 30);
+      ifstream in = loadFile("assets/config");
+      test.loadInfo(in);
+      test.loadDeck(in);
+      in = loadFile("assets/config");
+      tstp.loadInfo(in);
+      tstp.loadDeck(in);
+      unique_ptr<Player> jo = tstp.clonePtr();
+      jo -> drawCard();
+      jo -> drawCard();
+      jo -> drawCard();
+      jo -> drawCard();
+      jo -> playCard(1,test);
+      jo -> playCard(1,test);
+      jo -> playCard(1,test);
+      test . drawCard();
+      test . drawCard();
+      test . drawCard();
+      test . drawCard();
+      test . playCard(1,test);
+      test . playCard(1,test);
+      test . playCard(1,test);
+      //test.printBoard();
+      test.executeTurn(jo);
+      
 //    DrawCardEffect d(1);
 //    HealHeroEffect h(2);
 //    BattlecryCard silak("Silak",10,5);
@@ -33,8 +62,6 @@ int main(){
 //    cout << p -> handSize() << endl;
 //    d.doEffect(p,p);
 //    cout << p -> handSize() << endl;
-   Menu m;
-   m.init();
     
     //  GamePvP game;
     //  //game.saveGame();

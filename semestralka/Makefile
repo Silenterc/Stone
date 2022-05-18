@@ -9,7 +9,7 @@ SOURCES = $(wildcard src/*.cpp src/*/*.cpp)
 OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
 DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
-.PHONY: fast fast-debug all compile run valgrind clean count #these are goals, not files
+.PHONY: fast fast-debug all compile run run-debug valgrind clean count #these are goals, not files
 fast: 
 	${MAKE} -j12 compile #compilation on 12 threads
 
@@ -32,6 +32,9 @@ build/%.o: src/%.cpp
 	${CXX} ${BASIC_FLAGS} -c $< -o $@ 
 
 run: compile
+	./${LOGIN}
+
+run-debug: fast-debug
 	./${LOGIN}
 
 valgrind: compile

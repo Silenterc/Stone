@@ -9,6 +9,7 @@ public:
     int executeTurn(unique_ptr<Player>& trgt) override;
     void printConfirmation() const override{};
 protected:
-    
+    void tryGetLethal(unique_ptr<Player>& trgt);
+    void tryPreventLethal(unique_ptr<Player>& trgt);
 };
 #endif

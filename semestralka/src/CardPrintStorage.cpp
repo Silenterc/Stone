@@ -2,6 +2,25 @@
 #include <iostream>
 #include <queue>
 using namespace std;
+CardPrintStorage::CardPrintStorage(const CardPrintStorage& src){
+    size = src.size;
+    maxStorageSize = src.maxStorageSize;
+    for(const auto& c : src.cards){
+        cards.push_back(c -> clonePtr());
+    }
+}
+CardPrintStorage& CardPrintStorage::operator =(const CardPrintStorage& src){
+    if(this == &src){
+        return *this;
+    }
+    size = src.size;
+    maxStorageSize = src.maxStorageSize;
+    for(const auto& c : src.cards){
+        cards.push_back(c -> clonePtr());
+    }
+    return *this;
+
+}
 shared_ptr<Card> CardPrintStorage::viewCard(unsigned long cardNO) const{
     return cards[cardNO - 1];
 }

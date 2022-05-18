@@ -4,6 +4,8 @@
 class CardPrintStorage{
 public:
     CardPrintStorage(int max):size(0), maxStorageSize(max){};
+    CardPrintStorage(const CardPrintStorage& src);
+    CardPrintStorage& operator =(const CardPrintStorage& src);
     shared_ptr<Card> viewCard(unsigned long cardNO) const; //To see which card the player has chosen to play, but not actually play it(indexing from 1) 
     void print() const;
     void printCensored() const;
