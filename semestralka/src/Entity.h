@@ -6,6 +6,7 @@ using namespace std;
 class Entity{
 public:
     Entity(const string& nm, int hlth, int dmg = 0):name(nm), health(hlth), damage(dmg){};
+    Entity() = default;
     virtual ~Entity() = default;
     bool isDead() const;
     void changeHealth(int change){

@@ -12,6 +12,7 @@ public:
     size_t getSize() const{
         return size;
     }
+    int getValue() const;
     void removeCard(int cardNO){
         cards.erase(cards.begin() + (cardNO - 1));
         size--;
@@ -23,6 +24,11 @@ public:
         return out;
     }
     void load(ifstream& in);
+    vector< shared_ptr<Card> > getCards() const{
+        return cards;
+    }
+    void sort();
+    bool nextPerm();
 protected:
     vector< shared_ptr<Card> > cards;
     size_t size;

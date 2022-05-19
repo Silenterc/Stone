@@ -37,6 +37,19 @@ bool Player::attack(int attacking, int defending, Player& second){ //return fals
     }
     return true;
 }
+bool Player::attack(int attacking, int defending, PlayingBoard& second){
+    if(!(board.viewCard(attacking) -> isCharged())){ //the card cannot attack because it isnt charged(was played this round or has attacked)
+        return false;
+    }
+    if(second.hasTaunt() && !(second.viewCard(defending) -> isTaunt())){ //another Taunt detection
+        return false;
+    }
+    second.getAttacked(board.viewCard(attacking), defending); //card x card combat
+    if(board.viewCard(attacking) -> isDead()){ //if the attacker died during combat
+        board.removeCard(attacking);
+    }
+    return true;
+}
 void Player::printNameAndHealth(unsigned int flag) const{
     int spaces = getTermWidth()/2 - getNameLength()/2;
     if(flag){

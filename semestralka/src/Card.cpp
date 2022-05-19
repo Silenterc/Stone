@@ -2,6 +2,9 @@
 #include "Player.h"
 #include <iostream>
 bool Card::attack(Entity& second){
+    if(!charged){
+        return false;
+    }
     second.changeHealth(-damage);
     health -= second.getDamage();
     uncharge();

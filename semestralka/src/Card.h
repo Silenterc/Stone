@@ -17,6 +17,12 @@ public:
     bool attack(Entity& second);
     size_t getDamageLength() const;
     size_t getHealthLength() const;
+    int getValue() const{
+        if(isDead()){
+            return 0;
+        }
+        return damage + health;
+    }
     void changeHealth(int change){
         health += change;
     }

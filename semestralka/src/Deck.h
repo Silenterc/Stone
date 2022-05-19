@@ -3,6 +3,8 @@
 #define DECK_H
 #include "Card.h"
 #include <vector>
+#include <algorithm>
+#include <random>
 using namespace std;
 class Deck{
 public:

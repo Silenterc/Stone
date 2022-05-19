@@ -15,6 +15,7 @@ CardPrintStorage& CardPrintStorage::operator =(const CardPrintStorage& src){
     }
     size = src.size;
     maxStorageSize = src.maxStorageSize;
+    cards.clear();
     for(const auto& c : src.cards){
         cards.push_back(c -> clonePtr());
     }
@@ -121,6 +122,13 @@ void CardPrintStorage::printOstream(ostream& out) const{
         out << *c << endl;
     }
 }
+int CardPrintStorage::getValue() const{
+    int sum = 0;
+    for(const auto& c : cards){
+        sum += c -> getValue();
+    }
+    return sum;
+}
 void CardPrintStorage::load(ifstream& in){
     string cardLine;
     stringstream parser;
@@ -165,4 +173,16 @@ void CardPrintStorage::load(ifstream& in){
             throw invalid_argument("Invalid card type");
         }
     }  
+}
+void CardPrintStorage::sort(){
+    std::sort(cards.begin(), cards.end(), 
+    [](const shared_ptr<Card>& first, const shared_ptr<Card>& second) -> bool{
+        return first -> getName() < second -> getName();
+    });
+}
+bool CardPrintStorage::nextPerm(){
+    return next_permutation(cards.begin(),cards.end(),
+    [](const shared_ptr<Card>& first, const shared_ptr<Card>& second) -> bool{
+        return first -> getName() < second -> getName();
+    });
 }

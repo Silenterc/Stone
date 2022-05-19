@@ -61,3 +61,11 @@ bool PlayingBoard::isUncharged() const{
     }
     return true;
 }
+unsigned long PlayingBoard::getTauntIndex() const{
+    for(unsigned long i = 0; i < size; i++){
+        if(cards[i] -> isTaunt()){
+            return (i + 1);
+        }
+    }
+    return 0;
+}

@@ -1,6 +1,4 @@
 #include "Deck.h"
-#include <algorithm>
-#include <random>
 using namespace std;
 Deck& Deck::operator =(const Deck& second){
     if(this == &second){
