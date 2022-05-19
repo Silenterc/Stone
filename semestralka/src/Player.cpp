@@ -9,10 +9,11 @@ void Player::dealDmgOrHealBoard(int change){
     board.getDamagedOrHealed(change);
 }
 bool Player::playCard(unsigned long NO, Player& enemyPlayer){
-    bool canPlay = !(board.isFull());
+    bool canPlay = (!board.isFull() && charged);
     if(canPlay){
         hand.viewCard(NO) -> doBattlecry(*this, enemyPlayer); 
         board.addToBoard(hand.playCard(NO)); 
+        uncharge();
     }
     return canPlay;
 }
@@ -108,6 +109,9 @@ void Player::load(ifstream& in){
     deck.loadCards(in);
     hand.load(in);
     board.load(in);
+}
+bool Player::hasTauntOnBoard() const{
+    return board.hasTaunt();
 }
 void Player::loadInfo(ifstream& in){
     string basInfo, pname, phealth, pcharged;

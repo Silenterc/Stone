@@ -21,6 +21,7 @@ public:
         health += change;
     }
     virtual bool isTaunt() const = 0;
+    virtual bool isBattlecry() const = 0;
     virtual size_t getTypeLength() const = 0; //string length of the type (for printing purposes)
     virtual int getBattlecryLength(int row) const = 0;
     virtual shared_ptr<Card> clonePtr() = 0;
@@ -37,6 +38,9 @@ class BasicCard : public Card{
 public:
     BasicCard(const string& nm, int dmg, int hlth):Card(nm, dmg, hlth){};
     bool isTaunt() const override{
+        return false;
+    }
+    bool isBattlecry() const override{
         return false;
     }
     size_t getTypeLength() const override{
@@ -57,6 +61,9 @@ public:
     bool isTaunt() const override{
         return true;
     }
+    bool isBattlecry() const override{
+        return false;
+    }
     size_t getTypeLength() const override{
         return string("Taunt").length();
     }
@@ -74,6 +81,9 @@ public:
     BattlecryCard(const string& nm, int dmg, int hlth):Card(nm, dmg, hlth){};
     bool isTaunt() const override{
         return false;
+    }
+    bool isBattlecry() const override{
+        return true;
     }
     size_t getTypeLength() const override{
         return string("Battlecry").length();

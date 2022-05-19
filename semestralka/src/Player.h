@@ -55,6 +55,7 @@ public:
         return out;
     }
     void load(ifstream& in);
+    bool hasTauntOnBoard() const;
     virtual unique_ptr<Player> clonePtr() = 0; 
     virtual int executeTurn(unique_ptr<Player>& trgt) = 0;
     virtual void printConfirmation() const = 0;

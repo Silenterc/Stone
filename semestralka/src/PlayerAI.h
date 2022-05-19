@@ -11,5 +11,8 @@ public:
 protected:
     void tryGetLethal(unique_ptr<Player>& trgt);
     void tryPreventLethal(unique_ptr<Player>& trgt);
+    void getLethalRec(PlayerAI& ai, unique_ptr<Player>& trgt);
+    bool hasLethal(const PlayerAI& ai,unique_ptr<Player>& trgt) const;
+    void attackRec(PlayerAI& src, unique_ptr<Player>& trgt);
 };
 #endif

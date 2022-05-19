@@ -12,6 +12,8 @@ public:
     void chargeB(); //set charged status to true for all the cards on the board, so they can attack
     bool isFull() const override;
     void getDamagedOrHealed(int change); //change > 0 = heal, change < 0 = damage
+    int combinedDamage() const;
+    bool isUncharged() const;
 private:
 };
 #endif

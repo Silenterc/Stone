@@ -71,7 +71,6 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
             printException("Could not play the requested card.", true);
             return 1;
         }
-        uncharge();
         if(isDead() || trgt -> isDead()){
             return 0;
         }
