@@ -1,8 +1,6 @@
 #ifndef AI
 #define AI
 #include "Player.h"
-#include <algorithm>
-#include <climits>
 using namespace std;
 class PlayerAI : public Player{
 public:

@@ -1,5 +1,4 @@
 #include "Menu.h"
-using namespace std;
 vector<string> Menu::MENU = {{" I      I     I-------     I      I     I      I    "},
                              {" I \\  / I     I            I\\     I     I      I    "},
                              {" I  \\/  I     I            I \\    I     I      I    "},

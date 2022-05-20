@@ -1,7 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
 #include "Game.h"
-#include "algorithm"
 #include <filesystem>
 #define MENUMIDDLE 25 //how many chars are the radius of the big MENU printed
 using namespace std;

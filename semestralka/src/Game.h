@@ -4,6 +4,7 @@
 #include "PlayerAI.h"
 #define ENDMIDDLE 18
 #define FIRSTTURNDRAW 3
+#define SAVESPATH "/assets/saves"
 class Game{
 public:
     Game(){};
@@ -20,6 +21,8 @@ protected:
     void drawsCard(bool plr);
     void changePlayerTurn();
     void initPlayers();
+    bool noCardsLeft() const;
+    bool someoneDied() const;
     unique_ptr<Player>& getPlayer(bool plr);
     static vector<string> END;
     unique_ptr<Player> player1;

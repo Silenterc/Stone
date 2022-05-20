@@ -1,8 +1,4 @@
 #include "Hand.h"
-#include <sys/ioctl.h> 
-#include <unistd.h> 
-#include <iostream>
-#include <queue>
 using namespace std;
 pair<string, bool> Hand::drawCard(Deck& deck){
     if(isFull()){

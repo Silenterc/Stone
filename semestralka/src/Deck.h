@@ -1,7 +1,10 @@
-#pragma once
+
 #ifndef DECK_H
 #define DECK_H
-#include "Card.h"
+#include "Cards/Card.h"
+#include "Cards/BasicCard.h"
+#include "Cards/BattlecryCard.h"
+#include "Cards/TauntCard.h"
 #include <vector>
 #include <algorithm>
 #include <random>

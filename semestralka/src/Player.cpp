@@ -127,3 +127,6 @@ void Player::loadInfo(ifstream& in){
     health = stoi(phealth);
     charged = stoi(pcharged);
 }
+bool Player::noCardsLeft() const{
+    return (deck.isEmpty() && hand.isEmpty() && board.isEmpty());
+}

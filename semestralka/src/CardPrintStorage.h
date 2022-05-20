@@ -1,6 +1,8 @@
 #ifndef CPS_H
 #define CPS_H
 #include "Deck.h"
+#include "helperFunc.h"
+#include <queue>
 class CardPrintStorage{
 public:
     CardPrintStorage(int max):size(0), maxStorageSize(max){};
@@ -19,6 +21,9 @@ public:
 
     }
     virtual bool isFull() const = 0;
+    bool isEmpty() const{
+        return (size <= 0);
+    }
     friend ostream& operator <<(ostream& out, const CardPrintStorage& s){
         s.printOstream(out);
         return out;

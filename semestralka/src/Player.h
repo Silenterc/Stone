@@ -2,12 +2,12 @@
 #define PLAYER_H
 #include "Entity.h"
 #include "Hand.h"
-#include "Deck.h"
 #include "PlayingBoard.h"
 #include <limits>
+#include <climits>
 #include <sstream>
-#include <iostream>
 #include <fstream>
+#include <iomanip>
 #define CONFIGPATH "assets/config"
 using namespace std;
 class Player : public Entity{
@@ -58,6 +58,7 @@ public:
     }
     void load(ifstream& in);
     bool hasTauntOnBoard() const;
+    bool noCardsLeft() const;
     virtual unique_ptr<Player> clonePtr() = 0; 
     virtual int executeTurn(unique_ptr<Player>& trgt) = 0;
     virtual void printConfirmation() const = 0;

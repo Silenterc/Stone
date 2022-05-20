@@ -80,7 +80,6 @@ bool PlayerAI::attackOne(PlayerAI& src, unique_ptr<Player>& trgt, PlayingBoard& 
     }while(next_permutation(indexes.begin(),indexes.end())); //Here we permute the order in which the Cards attack
     int id = 0; 
     for(int i = 0; i < bestMoves.first;){ //Carry out the best possible attack combination
-        size_t boardSize = src.boardSize();
         if(src.attack(bestMoves.second[id], index, enemyB)){
             i++;
         }

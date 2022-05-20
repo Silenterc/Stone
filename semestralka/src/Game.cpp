@@ -49,7 +49,7 @@ void Game::play(bool justLoaded){
             }
         }
         getPlayer(playerTurn) -> printConfirmation();
-        if(getPlayer(playerTurn) -> isDead() || getPlayer(!playerTurn) -> isDead()){
+        if(someoneDied() || noCardsLeft()){
             finished();
             return;
         }
@@ -112,7 +112,7 @@ void Game::finished() const{
     sleep(5);
 }
 void Game::saveGame() const{
-    string fileName = "assets/saves/";
+    string fileName = SAVESPATH;
     fileName.append(getLocalTime());
     ofstream saveFile(fileName);
     if(saveFile.fail()){
@@ -191,4 +191,10 @@ void Game::playLoaded(){
             justLoaded = false;
         }
     }
+}
+bool Game::noCardsLeft() const{
+    return (player1 -> noCardsLeft() && player2 -> noCardsLeft());
+}
+bool Game::someoneDied() const{
+    return (player1 -> isDead() || player2 -> isDead());
 }
