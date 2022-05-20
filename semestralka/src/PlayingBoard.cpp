@@ -61,11 +61,27 @@ bool PlayingBoard::isUncharged() const{
     }
     return true;
 }
-unsigned long PlayingBoard::getTauntIndex() const{
+unsigned long PlayingBoard::getPriorityIndex() const{
+    unsigned long highestValueIndex = 1;
+    unsigned long highestValue = 0, currValue = 0;
     for(unsigned long i = 0; i < size; i++){
         if(cards[i] -> isTaunt()){
             return (i + 1);
         }
+        currValue = cards[i] -> getValue();
+        if(currValue > highestValue){
+            highestValue = currValue;
+            highestValueIndex = i + 1;
+        }
     }
-    return 0;
+    return highestValueIndex;
+}
+void PlayingBoard::evalDead(){
+    for(size_t i = 0; i < size;){
+        if(cards[i] -> isDead()){
+            removeCard(i + 1);
+        } else{
+            i++;
+        }
+    }
 }

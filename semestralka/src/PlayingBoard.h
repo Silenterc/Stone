@@ -14,7 +14,8 @@ public:
     void getDamagedOrHealed(int change); //change > 0 = heal, change < 0 = damage
     int combinedDamage() const;
     bool isUncharged() const;
-    unsigned long getTauntIndex() const;
+    unsigned long getPriorityIndex() const;
+    void evalDead();
 private:
 };
 #endif

@@ -29,10 +29,13 @@ void Game::printAll() const{
         player2 -> print(1);
     }
 }
-void Game::play(){
+void Game::play(bool justLoaded){
+    bool loaded = justLoaded;
     while(!isDone){  
-        getPlayer(playerTurn) -> charge();
-        if(isFirstRound == 0){
+        if(!loaded){
+            getPlayer(playerTurn) -> charge();
+        } 
+        if(isFirstRound == 0 && !loaded){
             drawsCard(playerTurn);
         }
         printAll();
@@ -55,6 +58,9 @@ void Game::play(){
         if(isFirstRound){  
             isFirstRound--;
         }
+        if(loaded){
+            loaded = false;
+        }
     }
 }
 void Game::changePlayerTurn(){
@@ -64,11 +70,9 @@ void Game::changePlayerTurn(){
         playerTurn = true;
     }
 }
-void Game::initStartPvP(){
-    PlayerLive p1("Player 1", 30);
-    PlayerLive p2("Player 2", 30);
-    player1 = p1.clonePtr();
-    player2 = p2.clonePtr();
+void Game::initStart(bool PvP){
+    isPvP = PvP;
+    initPlayers();
     ifstream in = loadFile(CONFIGPATH);
     player1 -> loadInfo(in);
     player1 -> loadDeck(in);
@@ -79,20 +83,18 @@ void Game::initStartPvP(){
     player1 -> drawXCards(FIRSTTURNDRAW);
     player2 -> drawXCards(FIRSTTURNDRAW);
 }
-void Game::initStartAI(){
-    PlayerLive p1("Player 1", 30);
-    PlayerAI p2("Player 2", 30);
-    player1 = p1.clonePtr();
-    player2 = p2.clonePtr();
-    ifstream in = loadFile(CONFIGPATH);
-    player1 -> loadInfo(in);
-    player1 -> loadDeck(in);
-    player2 -> loadInfo(in);
-    player2 -> loadDeck(in);
-    player1 -> shuffleDeck();
-    player2 -> shuffleDeck();
-    player1 -> drawXCards(FIRSTTURNDRAW);
-    player2 -> drawXCards(FIRSTTURNDRAW);
+void Game::initPlayers(){
+    if(isPvP){
+        PlayerLive p1;
+        PlayerLive p2;
+        player1 = p1.clonePtr();
+        player2 = p2.clonePtr();
+    } else{
+        PlayerLive p1;
+        PlayerAI p2;
+        player1 = p1.clonePtr();
+        player2 = p2.clonePtr();
+    }
 }
 void Game::finished() const{
     cout << "\033[H\033[2J" << flush;
@@ -116,32 +118,27 @@ void Game::saveGame() const{
     if(saveFile.fail()){
         throw invalid_argument("Could not create file.");
     }
-    saveFile << "PvP" << endl;
+    if(isPvP){
+        saveFile << "PvP" << endl;
+    } else{
+        saveFile << "AI" << endl;
+    }
     saveFile << playerTurn << endl;
     saveFile << isFirstRound << endl;
     saveFile << *player1;
     saveFile << *player2;
 }
-void Game::loadGame(ifstream& in, bool isPvP){
+void Game::loadGame(ifstream& in, bool PvP){
+    isPvP = PvP;
     string basInfo;
     getline(in,basInfo);
     playerTurn = stoi(basInfo);
     getline(in,basInfo);
     isFirstRound = stoi(basInfo);
-    if(isPvP){
-        PlayerLive p1("Player 1", 30);
-        PlayerLive p2("Player 2", 30);
-        player1 = p1.clonePtr();
-        player2 = p2.clonePtr();
-    } else{
-        PlayerLive p1("Player 1", 30);
-        PlayerAI p2("Player 2", 30);
-        player1 = p1.clonePtr();
-        player2 = p2.clonePtr();
-    }
+    initPlayers();
     player1 -> load(in);
     player2 -> load(in);
-    playLoaded();
+    play(true);
 }
 unique_ptr<Player>& Game::getPlayer(bool plr){
     if(plr){
@@ -185,11 +182,7 @@ void Game::playLoaded(){
             finished();
             return;
         }
-        if(playerTurn){
-            playerTurn = false;
-        } else{
-            playerTurn = true;
-        }
+        changePlayerTurn();
         getPlayer(playerTurn) -> chargeBoard();
         if(isFirstRound){
             isFirstRound--;

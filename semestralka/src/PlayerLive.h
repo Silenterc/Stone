@@ -10,6 +10,7 @@ public:
     unique_ptr<Player> clonePtr() override;
     int executeTurn(unique_ptr<Player>& trgt) override;
     void printConfirmation() const override;
+    void print(unsigned int flag) const override;
 protected:
     
 };

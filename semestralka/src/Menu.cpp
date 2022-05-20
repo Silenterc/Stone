@@ -31,7 +31,7 @@ void Menu::init(){
             case 1: {
                         Game g;
                         try{
-                            g.initStartPvP();
+                            g.initStart(true);
                             g.play();
                         } catch(...){
                             cout << "Could not load Game/damaged files" << endl;
@@ -43,7 +43,7 @@ void Menu::init(){
             case 2: {
                         Game ai;
                         try{
-                            ai.initStartAI();
+                            ai.initStart(false);
                             ai.play();
                         } catch(...){
                             cout << "Could not load Game/damaged files" << endl;

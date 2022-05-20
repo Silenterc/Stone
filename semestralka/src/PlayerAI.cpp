@@ -17,39 +17,15 @@ void PlayerAI::clearBoard(unique_ptr<Player>& trgt){
         PlayerAI ai = *this;
         unique_ptr<Player> enemy = trgt -> clonePtr();
         if(i == 0){ //For when I dont play a card
-            unsigned long indexToAttack = enemy -> getBoard().getTauntIndex(); //The AI attacks Taunts first
-            while(indexToAttack != 0){
-               if(!attackOne(ai, enemy, enemy -> getBoard(), indexToAttack)){ //If we cannot attack anymore
-                   break;
-               }
-               indexToAttack = enemy -> getBoard().getTauntIndex();
-            }
-            while(attackOne(ai, enemy, enemy -> getBoard(), 1)){ //If there are no Taunts left, attack the first Card on the Board
-            }
+            performAttacking(ai, enemy);
         } else if(ai.hand.viewCard(i) -> isBattlecry()){ //We play Battlecry and then attack
             ai.playCard(i, *enemy);
-            unsigned long indexToAttack = enemy -> getBoard().getTauntIndex();
-            while(indexToAttack != 0){
-               if(!attackOne(ai, enemy, enemy -> getBoard(), indexToAttack)){
-                   break;
-               }
-               indexToAttack = enemy -> getBoard().getTauntIndex();
-            }
-            while(attackOne(ai, enemy, enemy -> getBoard(), 1)){  
-            }
+            performAttacking(ai, enemy);
    
         } else{
             if(!hasBasicAttacked){ //For Cards that dont have any special effects, we only have to explore the options once
                 hasBasicAttacked = true;
-                unsigned long indexToAttack = enemy -> getBoard().getTauntIndex();
-                while(indexToAttack != 0){
-                    if(!attackOne(ai, enemy, enemy -> getBoard(), indexToAttack)){
-                        break;
-                    }
-                    indexToAttack = enemy -> getBoard().getTauntIndex();
-                }  
-                while(attackOne(ai, enemy, enemy -> getBoard(), 1)){
-                }
+                performAttacking(ai, enemy);
             }
             ai.playCard(i, *enemy); //And try to play the desired Card last
         }
@@ -76,8 +52,6 @@ bool PlayerAI::attackOne(PlayerAI& src, unique_ptr<Player>& trgt, PlayingBoard& 
         }
         return false;
     }
-    // trgt -> print(0);
-    // src.print(1);
     vector <unsigned long> indexes; //Vector to store our permuted indexes, in which order we will attack
     pair <int, vector<unsigned long>> bestMoves; //pair of <amount of attacking moves, indexes in the correct order> of the best attack combination
     int currBest = INT_MIN; //will be used to store, compare and evaluate the best Board state
@@ -106,11 +80,13 @@ bool PlayerAI::attackOne(PlayerAI& src, unique_ptr<Player>& trgt, PlayingBoard& 
     }while(next_permutation(indexes.begin(),indexes.end())); //Here we permute the order in which the Cards attack
     int id = 0; 
     for(int i = 0; i < bestMoves.first;){ //Carry out the best possible attack combination
+        size_t boardSize = src.boardSize();
         if(src.attack(bestMoves.second[id], index, enemyB)){
             i++;
         }
         id++;
     }
+    src.board.evalDead(); //Remove Cards which died while attacking in the previous loop
     return true;
 
 }
@@ -123,4 +99,33 @@ bool PlayerAI::hasLethal(const PlayerAI& ai, unique_ptr<Player>& trgt) const{
         return true;
     }
     return false;
+}
+void PlayerAI::performAttacking(PlayerAI& src, unique_ptr<Player>& trgt){
+    while(true){
+        unsigned long indexToAttack = trgt -> getBoard().getPriorityIndex(); //The AI attacks Taunts first, then the Cards with highest value
+        if(!attackOne(src, trgt, trgt -> getBoard(), indexToAttack)){ //If we cannot attack anymore
+            break;
+        }
+    }
+}
+void PlayerAI::printTurn(PlayerAI& src, unique_ptr<Player>& trgt) const{
+    cout << "\033[H\033[2J" << flush;
+    printLines(5);  
+    trgt -> print(0);
+    src.print(1); 
+}
+void PlayerAI::print(unsigned int flag) const{
+    if(flag){
+        board.print();
+        cout << endl;
+        hand.printCensored();
+        cout << endl;
+        printNameAndHealth(flag);
+    } else{
+        printNameAndHealth(flag);
+        hand.printCensored();
+        cout << endl;
+        board.print();
+        cout << endl;
+    }
 }

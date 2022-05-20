@@ -47,7 +47,7 @@ public:
     void shuffleDeck(){
         deck.shuffle();
     }
-    void print(unsigned int flag) const override; //if flag is zero, censor the hand, if it is 1, print it
+    void print(unsigned int flag) const = 0; //if flag is zero, censor the hand, if it is 1, print it
     bool playCard(unsigned long NO, Player& enemyPlayer); //returns false if the board is full.
     bool attack(int attacking, int defending, Player& second); //a complex function for a player attacking another player with one of his cards
     bool attack(int attacking, int defending, PlayingBoard& second);

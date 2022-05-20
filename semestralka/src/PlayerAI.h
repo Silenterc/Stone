@@ -11,13 +11,13 @@ public:
     unique_ptr<Player> clonePtr() override;
     int executeTurn(unique_ptr<Player>& trgt) override;
     void printConfirmation() const override{};
+    void print(unsigned int flag) const override;
 protected:
     void clearBoard(unique_ptr<Player>& trgt);
-    void tryPreventLethal(unique_ptr<Player>& trgt);
-    void getLethalRec(PlayerAI& ai, unique_ptr<Player>& trgt);
     bool hasLethal(const PlayerAI& ai,unique_ptr<Player>& trgt) const;
     bool attackOne(PlayerAI& src, unique_ptr<Player>& trgt, PlayingBoard& enemyB, unsigned long index);
-    void playTurn(unique_ptr<Player>& trgt);
     int evalOne(shared_ptr<Card> enemyCard, PlayingBoard& friendlyBoard);
+    void performAttacking(PlayerAI& src, unique_ptr<Player>& trgt);
+    void printTurn(PlayerAI& src, unique_ptr<Player>& trgt) const;
 };
 #endif

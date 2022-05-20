@@ -100,3 +100,18 @@ void PlayerLive::printConfirmation() const{
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+void PlayerLive::print(unsigned int flag) const{
+    if(flag){
+        board.print();
+        cout << endl;
+        hand.print();
+        cout << endl;
+        printNameAndHealth(flag);
+    } else{
+        printNameAndHealth(flag);
+        hand.printCensored();
+        cout << endl;
+        board.print();
+        cout << endl;
+    }    
+}
