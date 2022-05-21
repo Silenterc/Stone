@@ -52,11 +52,13 @@ bool Player::attack(unsigned long attacking, unsigned long defending, PlayingBoa
     second.getAttacked(board.viewCard(attacking), defending); //card x card combat
     return true;
 }
-void Player::printNameAndHealth(unsigned int flag) const{
+void Player::printInfo(unsigned int flag) const{
     int spaces = getTermWidth()/2 - getNameLength()/2;
     if(flag){
         printSpaces(spaces);
         cout << health << " health" << endl;
+        printSpaces(spaces);
+        cout << "deck: " << deck.getSize() << endl;
         cout << endl;
         printSpaces(spaces);
         cout << name << endl;
@@ -67,6 +69,8 @@ void Player::printNameAndHealth(unsigned int flag) const{
         cout << endl;
         printSpaces(spaces);
         cout << health << " health" << endl;
+        printSpaces(spaces);
+        cout << "deck: " << deck.getSize() << endl;
         cout << endl;
     }
 }

@@ -2,6 +2,10 @@
 #define HAND_H
 #include "CardPrintStorage.h"
 #define MAXHANDSIZE 5
+/**
+ * @brief The Player's Hand which hold Cards ready to be played.
+ * 
+ */
 class Hand : public CardPrintStorage{
 public:
     Hand():CardPrintStorage(MAXHANDSIZE){};       

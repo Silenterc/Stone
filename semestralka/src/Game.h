@@ -6,6 +6,10 @@
 #define FIRSTTURNDRAW 3
 #define SAVESPATH "assets/saves/"
 #define CONFIGPATH "assets/config"
+/**
+ * @brief The most important class - Game.
+ * Plays the game, updates it's state, saves it, loads it and prints it.
+ */
 class Game{
 public:
     Game(){};

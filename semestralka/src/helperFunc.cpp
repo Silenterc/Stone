@@ -33,6 +33,13 @@ void printException(const string& ex, bool shouldIgnore){
     cin.clear();
     sleep(3);
 }
+void printDashes(){
+    unsigned int SPACESCONSTANT = getTermWidth()/10;
+    printSpaces(SPACESCONSTANT);
+    for(unsigned int i = 0; i < (getTermWidth() - 2 * SPACESCONSTANT); i++){
+        cout <<'-';
+    }
+}
 ifstream loadFile(const string& path){
     ifstream in;
     in.open(path);

@@ -104,14 +104,20 @@ void PlayerLive::print(unsigned int flag) const{
     if(flag){
         board.print();
         cout << endl;
+        printDashes();
+        cout << endl;
         hand.print();
         cout << endl;
-        printNameAndHealth(flag);
+        printInfo(flag);
     } else{
-        printNameAndHealth(flag);
+        printInfo(flag);
         hand.printCensored();
         cout << endl;
+        printDashes();
+        cout << endl;
         board.print();
+        cout << endl;
+        printDashes();
         cout << endl;
     }    
 }
