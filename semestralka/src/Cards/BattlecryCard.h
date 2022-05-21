@@ -39,7 +39,16 @@ public:
      */
     void printOstream(ostream& out) const override;
 private:
+    /**
+     * This map allows me to create the desired polymorphic Effect.
+     * The key is the Effect ID and the value is a function that creates a shared_ptr to that Effect.
+     * 
+     */
     static unordered_map<string, function<shared_ptr<Effect>(int)>> effectFactory;
+    /**
+     * @brief Smart pointer holding the Effect, which gets performed after a card gets played. 
+     * 
+     */
     shared_ptr<Effect> effect;
 };
 #endif

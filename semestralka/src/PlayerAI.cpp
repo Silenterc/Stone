@@ -21,7 +21,6 @@ void PlayerAI::clearBoard(unique_ptr<Player>& trgt){
         } else if(ai.hand.viewCard(i) -> isBattlecry()){ //We play Battlecry and then attack
             ai.playCard(i, *enemy);
             performAttacking(ai, enemy);
-   
         } else{
             if(!hasBasicAttacked){ //For Cards that dont have any special effects, we only have to explore the options once
                 hasBasicAttacked = true;

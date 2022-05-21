@@ -27,12 +27,6 @@ void PlayingBoard::chargeB(){
         c -> charge();
     }
 }
-bool PlayingBoard::isFull() const{
-    if(size >= MAXBOARDSIZE){
-        return true;
-    }
-    return false;
-}
 void PlayingBoard::getDamagedOrHealed(int change){
     for(unsigned long i = 0; i < size;){
         cards[i] -> changeHealth(change);

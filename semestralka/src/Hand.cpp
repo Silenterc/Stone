@@ -19,9 +19,3 @@ shared_ptr<Card> Hand::playCard(int cardNO){
     size--;
     return toBeRet;
 }
-bool Hand::isFull() const{
-    if(size >= MAXHANDSIZE){
-        return true;
-    }
-    return false;
-}

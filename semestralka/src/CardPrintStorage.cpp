@@ -1,6 +1,4 @@
 #include "CardPrintStorage.h"
-#include <iostream>
-#include <queue>
 using namespace std;
 CardPrintStorage::CardPrintStorage(const CardPrintStorage& src){
     size = src.size;
@@ -24,6 +22,12 @@ CardPrintStorage& CardPrintStorage::operator =(const CardPrintStorage& src){
 }
 shared_ptr<Card> CardPrintStorage::viewCard(unsigned long cardNO) const{
     return cards[cardNO - 1];
+}
+bool CardPrintStorage::isFull() const{
+    if(size >= maxStorageSize){
+        return true;
+    }
+    return false;
 }
 
 //This function will calculate the difference between the previous words printed 
@@ -93,11 +97,6 @@ void CardPrintStorage::print() const{
         }
         cout << endl;
     } 
-}
-void CardPrintStorage::printStars(int stars) const{
-    for(int i = 0; i < stars; i++){
-        cout <<'*';
-    }
 }
 void CardPrintStorage::printCensored() const{
     int SPACESCONSTANT = getTermWidth()/10;
@@ -173,16 +172,4 @@ void CardPrintStorage::load(ifstream& in){
             throw invalid_argument("Invalid card type");
         }
     }  
-}
-void CardPrintStorage::sort(){
-    std::sort(cards.begin(), cards.end(), 
-    [](const shared_ptr<Card>& first, const shared_ptr<Card>& second) -> bool{
-        return first -> getName() < second -> getName();
-    });
-}
-bool CardPrintStorage::nextPerm(){
-    return next_permutation(cards.begin(),cards.end(),
-    [](const shared_ptr<Card>& first, const shared_ptr<Card>& second) -> bool{
-        return first -> getName() < second -> getName();
-    });
 }

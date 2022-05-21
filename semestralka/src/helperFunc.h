@@ -15,6 +15,7 @@ unsigned int getTermWidth();
 unsigned int getTermHeight();
 void printSpaces(int spaces);
 void printLines(int divisor);
+void printStars(int stars);
 void printException(const string& ex, bool shouldIgnore);
 void printDashes();
 ifstream loadFile(const string& path);

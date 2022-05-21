@@ -161,37 +161,6 @@ void Game::drawsCard(bool plr){
             }
         } 
 }
-void Game::playLoaded(){
-    bool justLoaded = true;
-    while(!isDone){
-        if(!justLoaded){
-            getPlayer(playerTurn) -> charge();
-        } 
-        if(!isFirstRound && !justLoaded){
-            printAll();
-            drawsCard(playerTurn);
-        }
-        printAll();
-        while(int i = getPlayer(playerTurn) -> executeTurn(getPlayer(!playerTurn))){
-            printAll();
-            if(i == 2){
-                saveGame();
-            }
-        }
-        if(getPlayer(playerTurn) -> isDead() || getPlayer(!playerTurn) -> isDead()){
-            finished();
-            return;
-        }
-        changePlayerTurn();
-        getPlayer(playerTurn) -> chargeBoard();
-        if(isFirstRound){
-            isFirstRound--;
-        }
-        if(justLoaded){
-            justLoaded = false;
-        }
-    }
-}
 bool Game::noCardsLeft() const{
     return (player1 -> noCardsLeft() && player2 -> noCardsLeft());
 }

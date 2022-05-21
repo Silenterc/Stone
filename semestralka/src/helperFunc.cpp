@@ -19,6 +19,11 @@ void printLines(int divisor){
         cout << endl;
     }
 }
+void printStars(int stars){
+    for(int i = 0; i < stars; i++){
+        cout <<'*';
+    }
+}
 void printException(const string& ex, bool shouldIgnore){
     if(shouldIgnore){
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
