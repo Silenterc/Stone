@@ -1,0 +1,21 @@
+PvP/AI
+PLAYERTURN
+ISFIRSTROUND
+-----PLAYER 1-----
+Name;health;charged
+--DECKCARDS--
+Name;Type;Damage;Health;batID;charged
+.
+.
+.
+--HANDCARDS--
+.
+.
+.
+--BOARDCARDS--
+.
+.
+.
+-----PLAYER 2-----
+...
+

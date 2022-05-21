@@ -1,0 +1,32 @@
+Welcome to Stone. A card game loosely inspired by Hearthstone.
+
+Each Player has 30 health. Once he loses all of his health, the game is over and he has lost.
+
+Each Player has a deck of cards. Each deck has 30 cards. The cards are the same for both Players, but the decks are shuffled randomly.
+
+Each card has damage, health and a type.
+Types of cards:
+	1, Basic Card - Does not have any special attribute. 
+
+	2, Taunt Card - Has highest priority. That means that if there is a Taunt on the enemy Player's board,
+			you have to attack him first. You may attack any Taunt, if there are multiple on the board.
+
+	3, Battlecry Card - Does a special action when played(= you play it from your hand to the board).
+	   There are 5 battlecry effects: 1. Draw a card and add 1 health to your hero
+				   	  2. Deal 2 damage to the enemy board
+				    	  3. Deal 3 damage to everybody(= your hero, your board, enemy hero, enemy board)
+				    	  4. Add 2 health to your board and hero
+				    	  5. Deal 2 damage to the enemy hero
+
+
+Each Player has a hand. The hand can hold up to 5 cards. --HOW MANY CARDS CAN HE PLAY IN ONE TURN??
+
+Each Player can place cards on the board. The board can hold up to 5 cards. The board has two sides for the two players.
+Cards can attack and be attacked while they are on the board. They can also attack the enemy Player.
+
+You can either play a game against another Player
+Or you can play against AI.
+
+You can save a game(by typing "save" at any point of the game).
+You can load a saved game.
+ 
