@@ -3,6 +3,17 @@
 using namespace std;
 #include <iostream>
 int main(){
+    // BattlecryCard d("n",4,5);
+    // d.setEffect("dce", 1);
+    // cout <<"here" << endl;
+    // d.setEffect("ade", 1);
+    // cout <<"here" << endl;
+    // d.setEffect("hbe", 1);
+    // cout <<"here" << endl;
+    // d.setEffect("hhe", 1);
+    // cout <<"here" << endl;
+    // d.setEffect("bde", 1);
+    // cout <<"here" << endl;
       Menu m;
       m.init();
     //   Deck a, b;

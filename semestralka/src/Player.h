@@ -51,7 +51,6 @@ public:
     bool playCard(unsigned long NO, Player& enemyPlayer); //returns false if the board is full.
     bool attack(int attacking, int defending, Player& second); //a complex function for a player attacking another player with one of his cards
     bool attack(int attacking, int defending, PlayingBoard& second);
-    void doBattlecry(int batID, Player& enemyPlayer); //A battlecry card has been played, and this function will carry out the battlecry effect on the game
     friend ostream& operator <<(ostream& out, const Player& p){
         p.printOstream(out);
         return out;

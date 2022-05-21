@@ -7,6 +7,10 @@ public:
     void printEffect(unsigned int flag) override;
     int getLength(int row) override;
     shared_ptr<Effect> copyPtr() override;
+    static shared_ptr<Effect> create(int st){
+        return make_shared<HealHeroEffect>(HealHeroEffect(st));
+    }
+    static constexpr char id[] = "hhe";
 protected:
     virtual void printOstream(ostream& out) const override;
 };

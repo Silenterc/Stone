@@ -10,6 +10,7 @@
 #include "../Effects/HealHeroEffect.h"
 #include <list>
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 /**
  * Card is the main component of this game.

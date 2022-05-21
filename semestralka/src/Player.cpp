@@ -1,6 +1,4 @@
 #include "Player.h"
-#include <iostream>
-#include <iomanip>
 using namespace std;
 void Player::chargeBoard(){
     board.chargeB();
@@ -78,26 +76,6 @@ void Player::loadDeck(ifstream& in){
 void Player::drawXCards(int x){
     for(int i = 0; i < x; i++){
         hand.drawCard(deck);
-    }
-}
-void Player::doBattlecry(int batID, Player& enemyPlayer){
-    switch(batID){
-        case 1: drawCard(); //Draw a card and heal 1 health to your hero
-                health++;
-                return;
-        case 2: enemyPlayer.dealDmgOrHealBoard(-2); //Deal 2 damage to the enemy board
-                return;
-        case 3: dealDmgOrHealBoard(-3); //Deal 3 damage to everyone
-                enemyPlayer.dealDmgOrHealBoard(-3);
-                health -= 3;
-                enemyPlayer.health -= 3;
-                return;
-        case 4: dealDmgOrHealBoard(2); //Add 2 health to your board and hero
-                health += 2;
-                return;
-        case 5: enemyPlayer.health -= 2; //Deal 2 damage to the enemy hero
-                return;
-        default: throw invalid_argument("Invalid battlecryID");
     }
 }
 void Player::printOstream(ostream& out) const{

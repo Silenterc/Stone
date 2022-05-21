@@ -1,6 +1,7 @@
 #ifndef btcr
 #define btcr
 #include "Card.h"
+#include <functional>
 /**
  * BattlecryCard is a type of Card, which performs an effect after being played.
  * 
@@ -38,6 +39,7 @@ public:
      */
     void printOstream(ostream& out) const override;
 private:
+    static unordered_map<string, function<shared_ptr<Effect>(int)>> effectFactory;
     shared_ptr<Effect> effect;
 };
 #endif

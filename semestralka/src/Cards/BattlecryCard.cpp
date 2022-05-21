@@ -1,4 +1,11 @@
 #include "BattlecryCard.h"
+unordered_map<string, function<shared_ptr<Effect>(int)>> BattlecryCard::effectFactory ={
+    {DrawCardEffect::id,DrawCardEffect::create},
+    {BoardDamageEffect::id,BoardDamageEffect::create},
+    {AllDamageEffect::id,AllDamageEffect::create},
+    {HealBoardEffect::id,HealBoardEffect::create},
+    {HealHeroEffect::id,HealHeroEffect::create}
+};
 void BattlecryCard::print(unsigned int flag) const{
     switch(flag){
         case 1: cout << name;
@@ -29,22 +36,8 @@ int BattlecryCard::getBattlecryLength(int row) const{
     return effect -> getLength(row);
 }
 void BattlecryCard::setEffect(string batID, int str){
-    if(batID == "dce"){
-        DrawCardEffect tmp(str);
-        effect = tmp.copyPtr();
-    } else if(batID == "bde"){
-        BoardDamageEffect tmp(str);
-        effect = tmp.copyPtr();
-    } else if(batID == "ade"){
-        AllDamageEffect tmp(str);
-        effect = tmp.copyPtr();
-    } else if(batID == "hbe"){
-        HealBoardEffect tmp(str);
-        effect = tmp.copyPtr();
-    } else if(batID == "hhe"){
-        HealHeroEffect tmp(str);
-        effect = tmp.copyPtr();
-    } else{
-        throw invalid_argument("Wrong battlecry");
+    if(effectFactory.count(batID) == 0){
+        throw invalid_argument("Wrong Battlecry.");
     }
+    effect = (effectFactory.at(batID))(str);
 }
