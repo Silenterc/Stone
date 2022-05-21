@@ -24,27 +24,27 @@ int PlayerLive::executeTurn(unique_ptr<Player>& trgt){
     if(in == "save"){
         return 2;
     } else if(in == "attack"){
-        int fr;
+        unsigned long fr;
         try{
             string from = getInput();
-            fr = stoi(from);
+            fr = stoul(from);
         } catch(...){
             printException("Wrong from parameter.", false);
             return 1;
         }
-        if(fr <= 0 || fr > (int)(boardSize())){
+        if(fr <= 0 || fr > (boardSize())){
             printException("Wrong from parameter.", true);
             return 1;
         }
-        int to;
+        unsigned long to;
         try{
             string trg = getInput();
-            to = stoi(trg);
+            to = stoul(trg);
         } catch(...){
             printException("Wrong target parameter.", false);
             return 1;
         }
-        if(to > (int)(trgt -> boardSize()) || to < 0){
+        if(to > (trgt -> boardSize()) || to < 0){
             printException("Wrong target parameter.", true);
             return 1;
         }

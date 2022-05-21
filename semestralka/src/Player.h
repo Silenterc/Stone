@@ -8,7 +8,6 @@
 #include <sstream>
 #include <fstream>
 #include <iomanip>
-#define CONFIGPATH "assets/config"
 using namespace std;
 class Player : public Entity{
 public:
@@ -49,8 +48,8 @@ public:
     }
     void print(unsigned int flag) const = 0; //if flag is zero, censor the hand, if it is 1, print it
     bool playCard(unsigned long NO, Player& enemyPlayer); //returns false if the board is full.
-    bool attack(int attacking, int defending, Player& second); //a complex function for a player attacking another player with one of his cards
-    bool attack(int attacking, int defending, PlayingBoard& second);
+    bool attack(unsigned long attacking, unsigned long defending, Player& second); //a complex function for a player attacking another player with one of his cards
+    bool attack(unsigned long attacking, unsigned long defending, PlayingBoard& second);
     friend ostream& operator <<(ostream& out, const Player& p){
         p.printOstream(out);
         return out;

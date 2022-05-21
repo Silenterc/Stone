@@ -174,14 +174,21 @@ void Menu::printSaves(vector<filesystem::directory_entry> svs) const{
 unsigned long Menu::saveInput() const{
     cout << endl;
     cout << "Which Save File would you like to choose?" << endl;
-    int i = 0;
-    if(!(cin >> i) || i < 0){
+    string i;
+    unsigned long ret = 0;
+    if(!(cin >> i)){
+        clearerr(stdin);
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         return 0;
     }
+    try{
+        ret = stoul(i);
+    } catch(...){
+       cin.ignore(numeric_limits<streamsize>::max(),'\n');
+       return 0; 
+    }
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    return (unsigned long)i;
+    return ret;
 }
 bool Menu::extractGameType(ifstream& in) const{
     string type;

@@ -4,7 +4,8 @@
 #include "PlayerAI.h"
 #define ENDMIDDLE 18
 #define FIRSTTURNDRAW 3
-#define SAVESPATH "/assets/saves"
+#define SAVESPATH "assets/saves/"
+#define CONFIGPATH "assets/config"
 class Game{
 public:
     Game(){};

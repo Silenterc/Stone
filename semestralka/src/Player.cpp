@@ -15,7 +15,7 @@ bool Player::playCard(unsigned long NO, Player& enemyPlayer){
     }
     return canPlay;
 }
-bool Player::attack(int attacking, int defending, Player& second){ //return false if there is a Taunt and Player wants to attack smt else
+bool Player::attack(unsigned long attacking, unsigned long defending, Player& second){ //return false if there is a Taunt and Player wants to attack smt else
     if(attacking <= 0 || attacking > board.getSize() || defending > second.board.getSize()){ //Out of Bounds
         return false;
     }
@@ -38,7 +38,7 @@ bool Player::attack(int attacking, int defending, Player& second){ //return fals
     }
     return true;
 }
-bool Player::attack(int attacking, int defending, PlayingBoard& second){
+bool Player::attack(unsigned long attacking, unsigned long defending, PlayingBoard& second){
     if(attacking <= 0 || attacking > board.getSize() || defending > second.getSize()){ //Out of Bounds
         cout << "erorr" << endl;
         return false;
