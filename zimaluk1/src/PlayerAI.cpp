@@ -4,8 +4,6 @@ unique_ptr<Player> PlayerAI::clonePtr(){
 }
 int PlayerAI::executeTurn(unique_ptr<Player>& trgt){
     clearBoard(trgt);
-    //tryGetLethal(trgt);
-    //tryPreventLethal(trgt);
     return 0;
 }
 void PlayerAI::clearBoard(unique_ptr<Player>& trgt){
@@ -92,12 +90,6 @@ int PlayerAI::evalOne(shared_ptr<Card> enemyCard, PlayingBoard& friendlyBoard){
     return friendlyBoard.getValue() - enemyCard -> getValue();
 }
 
-bool PlayerAI::hasLethal(const PlayerAI& ai, unique_ptr<Player>& trgt) const{
-    if(ai.board.combinedDamage() >= trgt -> getHealth() && !(trgt -> hasTauntOnBoard())){
-        return true;
-    }
-    return false;
-}
 void PlayerAI::performAttacking(PlayerAI& src, unique_ptr<Player>& trgt){
     while(true){
         unsigned long indexToAttack = trgt -> getBoard().getPriorityIndex(); //The AI attacks Taunts first, then the Cards with highest value

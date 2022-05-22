@@ -38,15 +38,6 @@ void PlayingBoard::getDamagedOrHealed(int change){
         }
     }
 }
-int PlayingBoard::combinedDamage() const{
-    int sum = 0;
-    for(const auto& c : cards){
-        if(c -> isCharged()){
-            sum += c -> getDamage();
-        }
-    }
-    return sum;
-}
 bool PlayingBoard::isUncharged() const{
     for(const auto& c : cards){
         if(c -> isCharged()){

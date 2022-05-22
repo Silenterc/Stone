@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['game',['Game',['../classGame.html',1,'Game'],['../classGame.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()']]],
+  ['game_2ecpp',['Game.cpp',['../Game_8cpp.html',1,'']]],
+  ['game_2eh',['Game.h',['../Game_8h.html',1,'']]],
+  ['getattacked',['getAttacked',['../classPlayingBoard.html#a2ac4921ba0a3e5c4d1d90570639c8032',1,'PlayingBoard']]],
+  ['getbattlecrylength',['getBattlecryLength',['../classBasicCard.html#a372428c5c8b8f293cf87d8417759459a',1,'BasicCard::getBattlecryLength()'],['../classBattlecryCard.html#a4f91b6df977792a75f85870070672ff5',1,'BattlecryCard::getBattlecryLength()'],['../classCard.html#a52b76ec7ce35392bea03ef4b276e407f',1,'Card::getBattlecryLength()'],['../classTauntCard.html#a60a4c06db8cc75514c7be6b12808d375',1,'TauntCard::getBattlecryLength()']]],
+  ['getboard',['getBoard',['../classPlayer.html#a1fd67662f13233cc98c3647672fde23b',1,'Player']]],
+  ['getcards',['getCards',['../classCardPrintStorage.html#a40ee304f1ac813050ae1bbbc4c1c6b65',1,'CardPrintStorage']]],
+  ['getdamage',['getDamage',['../classEntity.html#af723cc5c75855e421a0b2dcf29eb2903',1,'Entity']]],
+  ['getdamagedorhealed',['getDamagedOrHealed',['../classPlayingBoard.html#abc8eb241c7312b76afef3f731f7dcc0f',1,'PlayingBoard']]],
+  ['getdamagelength',['getDamageLength',['../classCard.html#aa2e785632302b601074e7267c911e177',1,'Card']]],
+  ['gethealth',['getHealth',['../classEntity.html#a56685d307e693f83149ec1fd47ce6cff',1,'Entity']]],
+  ['gethealthlength',['getHealthLength',['../classCard.html#a403561ad8795d692c93a3b1f54a8c40f',1,'Card']]],
+  ['getinput',['getInput',['../classPlayerLive.html#a8bf00a68cfe9ff6487120efd306c4f5a',1,'PlayerLive']]],
+  ['getlength',['getLength',['../classAllDamageEffect.html#af5ef773d89b54292f848eafa9bb91ab5',1,'AllDamageEffect::getLength()'],['../classBoardDamageEffect.html#a45ec5d3707c5fd59fd377833cba29b36',1,'BoardDamageEffect::getLength()'],['../classDrawCardEffect.html#a4ec4715fdaedd45650a1be16ab3db702',1,'DrawCardEffect::getLength()'],['../classEffect.html#a65a5f786a2add6cc0169ff9d897d75f9',1,'Effect::getLength()'],['../classHealBoardEffect.html#a0171cf5f7f5044d16fbd4510a3740dca',1,'HealBoardEffect::getLength()'],['../classHealHeroEffect.html#a742fbbf4e9a6dbb833ffc02e8b6443b0',1,'HealHeroEffect::getLength()']]],
+  ['getlocaltime',['getLocalTime',['../helperFunc_8cpp.html#a9143526cf84b04e6d3e159d69d2f82d2',1,'getLocalTime():&#160;helperFunc.cpp'],['../helperFunc_8h.html#a9143526cf84b04e6d3e159d69d2f82d2',1,'getLocalTime():&#160;helperFunc.cpp']]],
+  ['getmenuinput',['getMenuInput',['../classMenu.html#a6f2abc459903357ef5efba4acf2ab31d',1,'Menu']]],
+  ['getname',['getName',['../classEntity.html#a438837d2be5b221fd9aafc323c46f08a',1,'Entity']]],
+  ['getnamelength',['getNameLength',['../classEntity.html#a75003a48c440a61f4eff35f4c3537ef7',1,'Entity']]],
+  ['getplayer',['getPlayer',['../classGame.html#ad8e0503e0819e0ad4a6d567049faa346',1,'Game']]],
+  ['getpriorityindex',['getPriorityIndex',['../classPlayingBoard.html#a21d5098635502777302d38af9066bfee',1,'PlayingBoard']]],
+  ['getsize',['getSize',['../classCardPrintStorage.html#accf36593a14e150e8ebd9be93a0e893b',1,'CardPrintStorage::getSize()'],['../classDeck.html#a90f35650770aafd170413c87977f7a9d',1,'Deck::getSize()']]],
+  ['gettermheight',['getTermHeight',['../helperFunc_8cpp.html#a1c78305f5ca2344ad8d96214f64dc2da',1,'getTermHeight():&#160;helperFunc.cpp'],['../helperFunc_8h.html#a1c78305f5ca2344ad8d96214f64dc2da',1,'getTermHeight():&#160;helperFunc.cpp']]],
+  ['gettermwidth',['getTermWidth',['../helperFunc_8cpp.html#a0d9b565b1a4ccbbcd48be63a515a9542',1,'getTermWidth():&#160;helperFunc.cpp'],['../helperFunc_8h.html#a0d9b565b1a4ccbbcd48be63a515a9542',1,'getTermWidth():&#160;helperFunc.cpp']]],
+  ['gettypelength',['getTypeLength',['../classBasicCard.html#ad551f6af1fd8e5fe92eff6b07c2b1d70',1,'BasicCard::getTypeLength()'],['../classBattlecryCard.html#a1dc2114f4fd6e63f5c2bbe2b9fa0dd98',1,'BattlecryCard::getTypeLength()'],['../classCard.html#a54f5ef4a4c81f48113d1bd997adf0bd0',1,'Card::getTypeLength()'],['../classTauntCard.html#a2496911a1fd5a3b5254d99134115133d',1,'TauntCard::getTypeLength()']]],
+  ['getvalue',['getValue',['../classCardPrintStorage.html#a1e392ebbdd3f3d8a35e587c3878078fe',1,'CardPrintStorage::getValue()'],['../classCard.html#acc9b1b81d72e09c5a70036d0b91b4b30',1,'Card::getValue()']]]
+];

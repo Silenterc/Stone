@@ -12,7 +12,6 @@ public:
     void print(unsigned int flag) const override;
 protected:
     void clearBoard(unique_ptr<Player>& trgt);
-    bool hasLethal(const PlayerAI& ai,unique_ptr<Player>& trgt) const;
     bool attackOne(PlayerAI& src, unique_ptr<Player>& trgt, PlayingBoard& enemyB, unsigned long index);
     int evalOne(shared_ptr<Card> enemyCard, PlayingBoard& friendlyBoard);
     void performAttacking(PlayerAI& src, unique_ptr<Player>& trgt);

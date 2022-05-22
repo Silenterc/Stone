@@ -19,7 +19,7 @@ bool Player::attack(unsigned long attacking, unsigned long defending, Player& se
     if(attacking <= 0 || attacking > board.getSize() || defending > second.board.getSize()){ //Out of Bounds
         return false;
     }
-    if(second.board.hasTaunt() && defending == 0){ //0 means that Player wants to attack enemy Player directly, but in this case there is a Taunt in the way
+    if(second.hasTauntOnBoard() && defending == 0){ //0 means that Player wants to attack enemy Player directly, but in this case there is a Taunt in the way
         return false;
     }
     if(!(board.viewCard(attacking) -> isCharged())){ //the card cannot attack because it isnt charged(was played this round or has attacked)
@@ -29,7 +29,7 @@ bool Player::attack(unsigned long attacking, unsigned long defending, Player& se
         board.viewCard(attacking) -> attack(second); //FACE!!
         return true;
     }
-    if(second.board.hasTaunt() && !(second.board.viewCard(defending) -> isTaunt())){ //another Taunt detection
+    if(second.hasTauntOnBoard() && !(second.board.viewCard(defending) -> isTaunt())){ //another Taunt detection
         return false;
     }
     second.board.getAttacked(board.viewCard(attacking), defending); //card x card combat

@@ -12,6 +12,11 @@
 #include <ctime>
 using namespace std;
 /**
+ * @file helperFunc.h
+ * Helper functions used across the program.
+ */
+
+/**
  * @brief Get the terminal width
  * 
  * @return unsigned int Terminal width

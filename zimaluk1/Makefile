@@ -45,7 +45,7 @@ clean:
 	@rm -f ${LOGIN}
 	@rm -rf build doc
 doc: 
-	@doxygen Doxyfile
+	doxygen Doxyfile
 	
 	
 
