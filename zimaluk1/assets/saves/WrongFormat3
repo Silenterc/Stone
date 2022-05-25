@@ -1,10 +1,8 @@
-AI
+AIl
 1
 0
 Player 1;10;1
-5;
-Sabertooth;Battlecry;4;4;hhe;2;0
-Grizzly Bear;Taunt;5;5;0;0;0
+3;
 Friendly Man;Battlecry;2;6;hbe;2;0
 Magnetion;Taunt;4;7;0;0;0
 Loa;Basic Card;6;2;0;0;0
@@ -15,12 +13,10 @@ Coder;Basic Card;4;5;0;0;0
 Toph;Battlecry;5;4;ade;3;0
 0;
 Player 2;27;0
-7;
-Sabertooth;Battlecry;4;4;hhe;2;0
-Grizzly Bear;Taunt;5;5;0;0;0
+5;
 Friendly Girl;Battlecry;2;6;hbe;2;0
 Sabertooth;Battlecry;4;4;hhe;2;0
-Toph;Battlecry;5;4;ade;3;0
+Friendly Man;Battlecry;2;6;hbe;2;0
 Nikabrik;Battlecry;6;2;bde;2;0
 Fighter;Battlecry;4;4;bde;2;0
 2;

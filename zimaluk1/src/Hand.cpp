@@ -1,5 +1,4 @@
 #include "Hand.h"
-using namespace std;
 pair<string, bool> Hand::drawCard(Deck& deck){
     if(isFull()){
         return(make_pair<string,bool>(deck.drawCard() -> getName(), false));

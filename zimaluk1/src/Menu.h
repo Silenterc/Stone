@@ -3,7 +3,6 @@
 #include "Game.h"
 #include <filesystem>
 #define MENUMIDDLE 25 //how many chars are the radius of the big MENU printed
-using namespace std;
 /**
  * @brief Responsible for printing the Menu and carrying out correlated tasks.
  * Prints options to play a PvP Game, PvAI Game, load a saved Game and view instructions.

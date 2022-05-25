@@ -98,17 +98,11 @@ void PlayerAI::performAttacking(PlayerAI& src, unique_ptr<Player>& trgt){
         }
     }
 }
-void PlayerAI::printTurn(PlayerAI& src, unique_ptr<Player>& trgt) const{
-    cout << "\033[H\033[2J" << flush;
-    printLines(5);  
-    trgt -> print(0);
-    src.print(1); 
-}
 void PlayerAI::print(unsigned int flag) const{
     if(flag){
         board.print();
         cout << endl;
-        hand.printCensored();
+        hand.print();//censored for normal gameplay, uncensored to show functionality
         cout << endl;
         printInfo(flag);
     } else{

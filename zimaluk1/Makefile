@@ -7,9 +7,8 @@ FLAGS = -fsanitize=address
 
 SOURCES = $(wildcard src/*.cpp src/*/*.cpp)
 OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES}) #(patsubst original, replacement, sources)
-DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
-.PHONY: fast fast-debug all compile run run-debug valgrind clean doc #these are goals, not files
+.PHONY: fast fast-debug all compile run run-debug valgrind clean doc test#these are goals, not files
 fast: 
 	${MAKE} -j12 compile #compilation on 12 threads
 
@@ -44,9 +43,13 @@ valgrind: compile
 clean: 
 	@rm -f ${LOGIN}
 	@rm -rf build doc
+
 doc: 
 	doxygen Doxyfile
-	
+
+test: BASIC_FLAGS += -D TESTING
+test: compile run
+
 	
 
 

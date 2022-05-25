@@ -1,8 +1,8 @@
 Welcome to Stone. A card game loosely inspired by Hearthstone.
 
-Each Player has 30 health. Once he loses all of his health, the game is over and he has lost.
+Each Player has 30 health by default. Once he loses all of his health, the game is over and he has lost.
 
-Each Player has a deck of cards. Each deck has 30 cards. The cards are the same for both Players, but the decks are shuffled randomly.
+Each Player has a deck of cards. Each deck has by default 15 cards. The cards are by default the same for both Players, but the decks are shuffled randomly.
 
 Each card has damage, health and a type.
 Types of cards:
@@ -12,21 +12,28 @@ Types of cards:
 			you have to attack him first. You may attack any Taunt, if there are multiple on the board.
 
 	3, Battlecry Card - Does a special action when played(= you play it from your hand to the board).
-	   There are 5 battlecry effects: 1. Draw a card and add 1 health to your hero
-				   	  2. Deal 2 damage to the enemy board
-				    	  3. Deal 3 damage to everybody(= your hero, your board, enemy hero, enemy board)
-				    	  4. Add 2 health to your board and hero
-				    	  5. Deal 2 damage to the enemy hero
+	   There are 5 battlecry effects: 1. Draw x cards 
+				   	  2. Deal x damage to the enemy board
+				    	  3. Deal x damage to everybody(= your hero, your board(except the casting Card), enemy hero, enemy board)
+				    	  4. Add x health to your board 
+				    	  5. Add x health to your hero
 
 
-Each Player has a hand. The hand can hold up to 5 cards. --HOW MANY CARDS CAN HE PLAY IN ONE TURN??
+Each Player has a hand. The hand can hold up to 5 cards by default. Every round a player can play one Card on the board.
 
-Each Player can place cards on the board. The board can hold up to 5 cards. The board has two sides for the two players.
+The board can hold up to 5 cards by default. The board has two sides for the two players.
 Cards can attack and be attacked while they are on the board. They can also attack the enemy Player.
 
-You can either play a game against another Player
-Or you can play against AI.
+Controls:
 
-You can save a game(by typing "save" at any point of the game).
-You can load a saved game.
+When it is your turn:
+- "play i" = play a Card from your hand on the board, where 'i' is the index of your Card in your hand(first Card is 1 etc.)
+- "attack f t" = attack with your Card on the Board at index f against an enemy Entity with index t(t = 0 means attacking enemy Player directly, otherwise attacking enemy Cards)
+- "end" = You end your turn
+- "save" = You save the game
+- "exit" = You exit and end the Game
+
+When in the Menu main screen:
+- Follow the instructions
+- "exit" = You exit the program
  

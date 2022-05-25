@@ -1,5 +1,4 @@
 #include "Player.h"
-using namespace std;
 void Player::chargeBoard(){
     board.chargeB();
 }

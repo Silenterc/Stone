@@ -1,4 +1,4 @@
-#pragma once
+
 #ifndef HELP
 #define HELP
 #include <list>

@@ -65,8 +65,10 @@ void Menu::init(){
                         try{
                             printInstructions();
                             cout <<"Type in anything to return to the Menu." << endl;
-                            string s ;
+                            string s;
                             cin >> s;
+                            cin.clear();
+                            clearerr(stdin);
                             break;
                         } catch(...){
                             cout << "Could not open Instructions." << endl;

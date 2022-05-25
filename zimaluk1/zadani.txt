@@ -12,9 +12,8 @@ Váš engine:
 
 Mé specifikované zadání:
 
-1. V souboru config bude na každém řádku jedna karta zapsaná v csv formátu, kde místo ',' bude ';' jako oddělovač. Formát je: jméno;typ;damage;health;id_efektu(= 0, pokud není karta battlecry). Dále v tomto souboru také bude uživatel schopen nastavit počet životů hráčů.
-Na začátku hry se tyto karty načtou do balíčku. Oba hráči mají ten samý balíček karet, ale jinak zamíchaný.
-
+1. V souboru config bude info o hráči a potom na každém řádku jedna karta zapsaná v csv formátu, kde místo ',' bude ';' jako oddělovač. Formát je: jméno;typ;damage;health;id_efektu(= 0, pokud není karta battlecry), síla efektu, charged. 
+Na začátku hry se tyto karty načtou do balíčku. 
 2,3,4. V Menu bude možnost hrát 1v1 hru nebo hru proti AI.
 
 5. Hru bude možné uložit příkazem save a načíst v Menu. Hra se uloží do vygenerovaného souboru, který bude mít nějaký mnou specifikovaný formát. Karty budou uloženy v již předem avizovaném formátu.
@@ -23,21 +22,20 @@ Využití polymorfismu:
 
 Polymorfismus bude využívaný v mnoha situacích. Z abstraktní třídy Entity dědí abstraktní třída Card. Z abstraktní třídy Card dědí třídy Basic Card, Taunt Card, Battlecry Card. Abstraktní metody jsou využívány při tvorbě smart pointerů, zobrazení karet do terminálu, práci s battlecry efekty a zjištění různých informací o kartách.
 
-Z Entity také dědí třída Player, z které dědí třídy PlayerAI a PlayerLive. To zjednodušuje útočení karty na hráče a zobrazení hráčových karet do terminálu. 
+Z Entity také dědí třída Player, z které dědí třídy PlayerAI a PlayerLive. To zjednodušuje útočení karty na hráče a každý hráč bude mít jinou metodu pro útok.
 
-Dále bude využíván pro abstraktní třídu Game, z které podědí GamePvP a GameAI. Některé metody pro funkcionalitu hry budou využívat polymorfismus. 
+Dále bude využíván u samotných Battlecry Efektů. Těch bude cca 5 a mohou mít různou sílu. Budou mít polymorfní metodu pro exekuci jejich efektu.
 
-Menší nákres tříd a dědění je obsažen v souboru Drawing.
 
 Specifikace logiky hry:
 
 Karetní hru mezi sebou hrají 2 hráči. Každý hráč má nějaký počet životů. Jakmile ztratí všechny životy, prohrál.
-Každý hráč má balíček karet. Balíčky mají oba hráči stejné, ale jsou zamíchané náhodně.
+Každý hráč má balíček karet. Balíčky mají defaultně oba hráči stejné, ale jsou zamíchané náhodně.
 Každá karta má sílu útoku (damage), počet životů (health) a typ.
 Jsou 3 typy karet: Basic card - Nemá žádný speciální atribut.
-		   Taunt card - Pokud je na stole Taunt, tak na něj musí protější hráč útočit, dokud ho nezničí. Neboli nemůže útočit na cokoliv co není Taunt. Pokud je na stole více Tauntů, může útočit 		   na kterýkoliv z nich.
+		   Taunt card - Pokud je na stole Taunt, tak na něj musí protější hráč útočit, dokud ho nezničí. Neboli nemůže útočit na cokoliv co není Taunt. Pokud je na stole více Tauntů, může útočit na kterýkoliv z nich.
 		   Battlecry card - Učiní nějaký speciální efekt když se zahraje z hráčovy ruky na stůl. Speciální efekty jsou různé(Uber ostatním damage, přidej tvým kartám životy, vezmi si kartu...)
 
-Hráč může mít na stole až 5 karet. V ruce může mít také až 5 karet. Na začátku hry dostanou oba hráči 3 karty. Na začátku každého kola si oba hráči vezmou kartu z balíčku. Pokud má hráč již plnou ruku karet, tak je nové nabytá karta ztracená.  
+Hráč může mít na stole defaultně až 5 karet. V ruce může mít defaultně také až 5 karet. Na začátku hry dostanou oba hráči 3 karty. Na začátku každého kola si oba hráči vezmou kartu z balíčku. Pokud má hráč již plnou ruku karet, tak je nové nabytá karta ztracená.  
 
-Hráč může útočit s kartami, které má na stole. Může útočit na protější karty a na protějšího hráče.
+Hráč může útočit s kartami, které má na stole. Může útočit na protější karty a na protějšího hráče. Každý tah může zahrát právě jednu kartu na stůl.

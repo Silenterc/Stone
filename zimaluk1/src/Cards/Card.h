@@ -11,7 +11,6 @@
 #include <list>
 #include <iostream>
 #include <unordered_map>
-using namespace std;
 /**
  * Card is the main component of this game.
  * It is an abstract class, from which inherit different types of Cards.

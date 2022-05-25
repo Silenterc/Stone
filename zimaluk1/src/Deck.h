@@ -8,7 +8,6 @@
 #include <vector>
 #include <algorithm>
 #include <random>
-using namespace std;
 /**
  * @brief Deck which stores Cards.
  * 
