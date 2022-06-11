@@ -1,14 +1,3 @@
-Zadání z Protestu:
-Naprogramujte engine pro hraní karetního RPG
-
-Váš engine:
-
-1.ze souboru nahraje definici karet (jejich typ, atributy, efekty), balíčku (seznam karet v balíčku)
-2.umožní vytvořit a hrát samotnou karetní hru
-3.implementuje variantu pro jednoho hráče proti počítači (náhodné tahy nestačí)
-4.implementuje variantu pro dva hráče (výměna přes potvrzovací okno, aby soupeř neviděl karty, nebo naopak soupeři si celou dobu do karet vidí)
-5.umožňuje ukládat a načítat rozehrané hry
-
 
 Mé specifikované zadání:
 
